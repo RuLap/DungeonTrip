@@ -30,40 +30,6 @@ public class Movement : MonoBehaviour
     {
         Vector2 move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         moveVelocity = move.normalized * speed;
-        
-        //Idle
-        if(move.x == 0 && move.y == 0)
-        {
-            spriteRenderer.sprite = moveSprites[0];
-        }
-
-        if(move.x == 0)
-        {
-            //Up
-            if(move.y > 0)
-            {
-                spriteRenderer.sprite = moveSprites[1];
-            }
-            //Down
-            if(move.y < 0)
-            {
-                spriteRenderer.sprite = moveSprites[2];
-            }
-        }
-
-        if(move.y == 0)
-        {
-            //Left
-            if(move.x < 0)
-            {
-                spriteRenderer.sprite = moveSprites[3];
-            }
-            //Right
-            if(move.x > 0)
-            {
-                spriteRenderer.sprite = moveSprites[4];
-            }
-        }
     }
 
     private void FixedUpdate()

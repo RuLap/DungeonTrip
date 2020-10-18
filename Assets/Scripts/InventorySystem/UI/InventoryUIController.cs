@@ -67,6 +67,16 @@ public class InventoryUIController : MonoBehaviour
             var count = cells[i].GetComponentInChildren<Image>(true).GetComponentInChildren<Text>(true);
             count.text = (inventory.Items[i] as PotionItem).Count.ToString();
         }
+        gameObject.SetActive(true);
+    }
+
+    /// <summary>
+    /// Закрвает инвентарь
+    /// </summary>
+    public void OnInventoryClose()
+    {
+        gameObject.SetActive(false);
+        inventory.InventoryIsClosed();
     }
 
     /// <summary>

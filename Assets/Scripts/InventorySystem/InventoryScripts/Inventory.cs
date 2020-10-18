@@ -63,7 +63,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void OpenInventory()
     {
-        inventory.SetActive(true);
+        inventory.GetComponent<InventoryUIController>().OnInventoryOpen();
         isInventoryOpened = true;
     }
 
@@ -72,7 +72,15 @@ public class Inventory : MonoBehaviour
     /// </summary>
     public void CloseInventory()
     {
-        inventory.SetActive(false);
+        inventory.GetComponent<InventoryUIController>().OnInventoryClose();
+        isInventoryOpened = false;
+    }
+
+    /// <summary>
+    /// Метод вызывается при закрытии инвентаря нажатием UI кнопки крестика
+    /// </summary>
+    public void InventoryIsClosed()
+    {
         isInventoryOpened = false;
     }
 

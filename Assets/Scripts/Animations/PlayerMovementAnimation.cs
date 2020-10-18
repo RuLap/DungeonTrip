@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovementAnimation : MonoBehaviour
 {
-    [SerializeField]
     private Animator animator;
     private string[] idleAnimations = { "UpIdle", "LeftIdle", "DownIdle", "RightIdle" };
 

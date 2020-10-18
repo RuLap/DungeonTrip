@@ -13,17 +13,9 @@ public class Movement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
 
-    private SpriteRenderer spriteRenderer;
-
-    [SerializeField]
-    private Sprite[] moveSprites = new Sprite[5];
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
-        spriteRenderer.sprite = moveSprites[0];
     }
 
     void Update()

@@ -50,10 +50,12 @@ public class Inventory : MonoBehaviour
     {
         if (isInventoryOpened)
         {
+            Time.timeScale = 1f;
             CloseInventory();
         }
         else
         {
+            Time.timeScale = 0f;
             OpenInventory();
         }
     }
@@ -108,14 +110,14 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void InitEquipments()
     {
-        items.Add(new ArmorItem(6, db.ItemsSprites[6], "", 100, 1, 5));
-        items.Add(new ArmorItem(7, db.ItemsSprites[7], "", 100, 1, 5));
-        items.Add(new ArmorItem(8, db.ItemsSprites[8], "", 100, 1, 5));
+        items.Add(new ArmorItem(6, db.ItemsSprites[9], "", 100, 1, 5));
+        items.Add(new ArmorItem(7, db.ItemsSprites[10], "", 100, 1, 5));
+        items.Add(new ArmorItem(8, db.ItemsSprites[9], "", 100, 1, 5));
         items.Add(new ArmorItem(9, db.ItemsSprites[9], "", 100, 1, 5));
-        items.Add(new ArmorItem(10, db.ItemsSprites[10], "", 100, 1, 5));
-        items.Add(new ArmorItem(11, db.ItemsSprites[11], "", 100, 1, 5));
-        items.Add(new ArmorItem(12, db.ItemsSprites[11], "", 100, 1, 5));
-        items.Add(new ArmorItem(13, db.ItemsSprites[11], "", 100, 1, 5));
+        items.Add(new WeaponItem(10, db.ItemsSprites[6], "", 100, 1, 5));
+        items.Add(new WeaponItem(11, db.ItemsSprites[7], "", 100, 1, 5));
+        items.Add(new WeaponItem(12, db.ItemsSprites[8], "", 100, 1, 5));
+        items.Add(new ArmorItem(13, db.ItemsSprites[9], "", 100, 1, 5));
     }
 
     /// <summary>
@@ -220,5 +222,23 @@ public class Inventory : MonoBehaviour
     {
         var item = items[index] as PotionItem;
         item.Use();
+    }
+
+    /// <summary>
+    /// Пуст ли слот меча
+    /// </summary>
+    /// <returns>Есть ли что то в слоте с надетым мечом</returns>
+    public bool HasEmptyWeaponSlot()
+    {
+        return items[12] == null;
+    }
+
+    /// <summary>
+    /// Пуст ли слот брони
+    /// </summary>
+    /// <returns>Есть ли что то в слоте с надетой броней</returns>
+    public bool HasEmptyArmorSlot()
+    {
+        return items[13] == null;
     }
 }

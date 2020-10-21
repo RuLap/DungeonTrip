@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class InventoryUIController : MonoBehaviour
 {
     [SerializeField]
+    private GameObject audioHolder;
+    private InventoryAudio audio;
+    [SerializeField]
     private GameObject player;
     private Inventory inventory;
 
@@ -37,6 +40,7 @@ public class InventoryUIController : MonoBehaviour
 
     void Start()
     {
+        audio = audioHolder.GetComponent<InventoryAudio>();
         //определили инвентарь
         inventory = player.GetComponent<Inventory>();
         //создали ячейки
@@ -75,6 +79,7 @@ public class InventoryUIController : MonoBehaviour
     /// </summary>
     public void OnInventoryClose()
     {
+        Time.timeScale = 1f;
         gameObject.SetActive(false);
         inventory.InventoryIsClosed();
     }
@@ -193,11 +198,21 @@ public class InventoryUIController : MonoBehaviour
     {
         //находим индекс выбраного предмета
         int index = GetSelectionIndex();
+        var item = inventory.Items[index];
         //вызываем метод модели
         inventory.RemoveItem(index);
         //изменяем отображение
         OnInventoryChanged();
         UIReset();
+
+        if(item is ArmorItem)
+        {
+            audio.PlayDropArmor();
+        }
+        else if(item is WeaponItem)
+        {
+            audio.PlayDropSword();
+        }
     }
 
     /// <summary>
@@ -206,9 +221,19 @@ public class InventoryUIController : MonoBehaviour
     public void OnEquip()
     {
         int index = GetSelectionIndex();
+        var item = inventory.Items[index];
         inventory.ReplaceToEquipment(index);
         OnInventoryChanged();
         UIReset();
+
+        if(item is ArmorItem)
+        {
+            audio.PlayEquipArmor();
+        }
+        else if(item is WeaponItem)
+        {
+            audio.PlayEquipSword();
+        }
     }
 
     /// <summary>
@@ -261,9 +286,25 @@ public class InventoryUIController : MonoBehaviour
     public void OnUnequip()
     {
         int index = GetSelectionIndex();
+        var item = inventory.Items[index];
         inventory.ReplaceFromEquipment(index);
         OnInventoryChanged();
         UIReset();
+
+        if(item is ArmorItem)
+        {
+            if (inventory.HasEmptyArmorSlot())
+            {
+                audio.PlayUnequipArmor();
+            }
+        }
+        else if(item is WeaponItem)
+        {
+            if (inventory.HasEmptyWeaponSlot())
+            {
+                audio.PlayUnequipSword();
+            }
+        }
     }
 
     /// <summary>
@@ -275,5 +316,14 @@ public class InventoryUIController : MonoBehaviour
         inventory.UsePotion(index);
         OnInventoryChanged();
         OnPotionCountChanged();
+
+        if(index > 0 && index < 3)
+        {
+            audio.PlayHealUse();
+        }
+        else if(index >= 3 && index < 6)
+        {
+            audio.PlayManaUse();
+        }
     }
 }

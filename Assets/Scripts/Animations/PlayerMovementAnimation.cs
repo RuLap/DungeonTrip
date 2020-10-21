@@ -6,13 +6,29 @@ public class PlayerMovementAnimation : MonoBehaviour
 {
     private Animator animator;
     private string[] idleAnimations = { "UpIdle", "LeftIdle", "DownIdle", "RightIdle" };
-
+    private AudioSource walk;
+    [SerializeField]
+    private AudioClip sound;
     void Start()
     {
+        walk = GetComponent<AudioSource>();
+        walk.clip = sound;
         animator = GetComponent<Animator>();
     }
     void Update()
     {
+        var curState = animator.GetCurrentAnimatorStateInfo(0);
+        if(curState.IsName("UpIdle") || curState.IsName("LeftIdle") || curState.IsName("DownIdle") || curState.IsName("RightIdle"))
+        {
+            walk.Stop();
+        }
+        else
+        {
+            if (!walk.isPlaying)
+            {
+                walk.Play();
+            }
+        }
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             ResetIdle();

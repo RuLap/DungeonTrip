@@ -18,7 +18,10 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Attack();
+            if (!GameController.IsPaused)
+            {
+                Attack();
+            }
         }
     }
 

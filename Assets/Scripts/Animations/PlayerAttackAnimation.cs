@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class PlayerAttackAnimation : MonoBehaviour
 {
+    private AttackAudio audio;
+
     private Animator animator;
     [SerializeField]
     private GameObject player;
     private Animator playerAnim;
+
     void Start()
     {
+        audio = GetComponent<AttackAudio>();
         playerAnim = player.GetComponent<Animator>();
         animator = GetComponent<Animator>();
     }
 
     public void PlayAttackAnimation()
     {
+        audio.PLayNoDamage();
         var curState = playerAnim.GetCurrentAnimatorStateInfo(0);
         if(curState.IsName("UpMove") || curState.IsName("UpIdle"))
         {

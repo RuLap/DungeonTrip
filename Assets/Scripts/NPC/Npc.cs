@@ -19,6 +19,9 @@ public class Npc : MonoBehaviour
         info = NpcInfo.CreateFromJSON(jsonString);
     }
 
+    /// <summary>
+    /// Отображение сообщения npc на панели
+    /// </summary>
     public void TellInfo()
     {
         
@@ -26,14 +29,34 @@ public class Npc : MonoBehaviour
         {
             return;
         }
-        messageUI.text = $"<color=\"blue\">{info.name}:</color> {info.message}";
+        messageUI.text = $"<color=\"blue\">{info.name}:</color>";
         infoPanel.SetActive(true);
+        StartCoroutine("WriteMessage");
         Time.timeScale = 0;
     }
 
+    /// <summary>
+    /// Закрытие панели
+    /// </summary>
     public void CloseInfoPanel()
     {
         infoPanel.SetActive(false);
         Time.timeScale = 1;
+        StopCoroutine("WriteMessage");
+    }
+
+    /// <summary>
+    /// Выводит текст побуквенно с задержкой
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator WriteMessage()
+    {
+        string msg = messageUI.text;
+        for(int i = 0; i < info.message.Length; i++)
+        {
+            msg += info.message[i];
+            messageUI.text = msg;
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
     }
 }

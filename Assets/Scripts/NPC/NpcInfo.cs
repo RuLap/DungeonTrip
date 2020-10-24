@@ -8,6 +8,11 @@ public class NpcInfo
     public string name;
     public string message;
 
+    /// <summary>
+    /// Парсит JSON в объект NpcInfo
+    /// </summary>
+    /// <param name="json">Имя файла JSON</param>
+    /// <returns>Объект NpcInfo</returns>
     public static NpcInfo CreateFromJSON(string json)
     {
         var jsonPath = Application.dataPath + "/StreamingAssets/" + json + ".json";

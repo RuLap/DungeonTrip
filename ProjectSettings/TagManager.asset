@@ -6,6 +6,7 @@ TagManager:
   tags:
   - InventoryCell
   - Enemie
+  - NPC
   layers:
   - Default
   - TransparentFX

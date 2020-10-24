@@ -7,13 +7,11 @@ public class Player : MonoBehaviour
 {
     private PlayerAttackAnimation attackAnim;
 
-    // Start is called before the first frame update
     void Start()
     {
         attackAnim = GetComponentInChildren<PlayerAttackAnimation>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -22,6 +20,10 @@ public class Player : MonoBehaviour
             {
                 Attack();
             }
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SpeakToNpc();
         }
     }
 
@@ -36,6 +38,21 @@ public class Player : MonoBehaviour
                 if (collider.CompareTag("Enemie"))
                 {
                     //вызов получения урона у противников
+                }
+            }
+        }
+    }
+    private void SpeakToNpc()
+    {
+        var colliders = Physics2D.OverlapCircleAll(transform.position, 1);
+        if (colliders.Length > 0)
+        {
+            foreach (var collider in colliders)
+            {
+                if(collider.TryGetComponent<Npc>(out Npc npc))
+                {
+                    npc.TellInfo();
+                    return;
                 }
             }
         }

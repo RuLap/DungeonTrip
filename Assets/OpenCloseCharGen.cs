@@ -3,10 +3,15 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+/// <summary>
+/// Класс для открытия генерации персонажа
+/// </summary>
 public class OpenCloseCharGen : MonoBehaviour
 {
     // Start is called before the first frame update
+    //Аниматор
     Animator anim;
+    //Открыт ли инвентарь?
     private bool state = false;
     void Start()
     {
@@ -25,10 +30,16 @@ public class OpenCloseCharGen : MonoBehaviour
             state = !state;
         }
     }
+    /// <summary>
+    /// Открывает окно
+    /// </summary>
     public void clickOnOn()
     {
         StartCoroutine(On());
     }
+    /// <summary>
+    /// Закрывает окно
+    /// </summary>
     public void clickOnOff()
     {
         StartCoroutine(Off());

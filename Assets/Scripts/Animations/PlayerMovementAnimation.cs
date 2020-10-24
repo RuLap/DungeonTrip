@@ -11,9 +11,9 @@ public class PlayerMovementAnimation : MonoBehaviour
     private AudioClip sound;
     void Start()
     {
-        walk = GetComponent<AudioSource>();
+        walk = GetComponentInChildren<AudioSource>();
         walk.clip = sound;
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
     void Update()
     {

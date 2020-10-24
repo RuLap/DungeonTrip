@@ -7,7 +7,11 @@ public class SpriteSwapDemo : MonoBehaviour
     // The name of the sprite sheet to use
 
     // The name of the currently loaded sprite sheet
-    private string LoadedSpriteSheetName;
+    private string loadedSpriteSheetName;
+    private string[] maleSkins={"Male1", "Male2" , "Male3" };
+    private string[] femaleSkins = {"Female1", "Female2", "Female3" };
+    private string[] selectedSkins;
+    private int selectedSkinsInt=2;
 
     // The dictionary containing all the sliced up sprites in the sprite sheet
     private Dictionary<string, Sprite> spriteSheet;
@@ -19,8 +23,9 @@ public class SpriteSwapDemo : MonoBehaviour
     private void Start()
     {
         // Get and cache the sprite renderer for this game object
-        this.spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        LoadSpriteSheet("Male3");
+        this.spriteRenderer = GameObject.Find("Player").GetComponentInChildren<SpriteRenderer>();
+        selectedSkins = maleSkins;
+        LoadSpriteSheet();
     }
 
     private void LateUpdate()
@@ -31,30 +36,34 @@ public class SpriteSwapDemo : MonoBehaviour
         this.spriteRenderer.sprite = this.spriteSheet[this.spriteRenderer.sprite.name];
     }
     // Loads the sprites from a sprite sheet
-    public void LoadSpriteSheet(string SpriteSheetName)
+    public void LoadSpriteSheet()
     {
         // Load the sprites from a sprite sheet file (png). 
         // Note: The file specified must exist in a folder named Resources
-        var sprites = Resources.LoadAll<Sprite>(SpriteSheetName);
+        var sprites = Resources.LoadAll<Sprite>(selectedSkins[selectedSkinsInt]);
         this.spriteSheet = sprites.ToDictionary(x => x.name, x => x);
 
         // Remember the name of the sprite sheet in case it is changed later
-        this.LoadedSpriteSheetName = SpriteSheetName;
+        this.loadedSpriteSheetName = selectedSkins[selectedSkinsInt];
     }
-    public void clickOnBut1()
+    /// <summary>
+    /// Функция меняет тело персонажа в зависимости от указаного номера
+    /// </summary>
+    /// <param name="num">Номер скина</param>
+   public void clickOnSkinSelect(int skin)
     {
-        LoadSpriteSheet("Male1");
+        selectedSkinsInt += skin;
+        if (selectedSkinsInt > maleSkins.Length-1) selectedSkinsInt = 0;
+        else if (selectedSkinsInt < 0) selectedSkinsInt = maleSkins.Length - 1;
+        Debug.Log(selectedSkinsInt);
+        LoadSpriteSheet();
     }
-    public void clickOnBut2()
+    public void clickOnGender(bool gender)
     {
-        LoadSpriteSheet("Male2");
-    }
-    public void clickOnBut3()
-    {
-        LoadSpriteSheet("Male3");
-    }
-    public void clickOnBut4()
-    {
-        LoadSpriteSheet("Female1");
+        if (gender)
+            selectedSkins = maleSkins;
+        else
+            selectedSkins = femaleSkins;
+        LoadSpriteSheet();
     }
 }

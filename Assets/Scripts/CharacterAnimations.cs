@@ -11,9 +11,12 @@ public class CharacterAnimations : MonoBehaviour
     Animator animator;
     string state;
     public GameObject Swapper;
+    OpenCloseCharGen OCCG;
+    bool UIState = false;
     void Start()
     {
         animator = gameObject.GetComponentInChildren<Animator>();
+        OCCG = Swapper.GetComponent<OpenCloseCharGen>();
     }
 
     // Update is called once per frame
@@ -29,7 +32,11 @@ public class CharacterAnimations : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.U))
         {
-            Swapper.SetActive(!Swapper.activeSelf);
+            if (!UIState)
+                OCCG.clickOnOn();
+            else
+                OCCG.clickOnOff();
+            UIState = !UIState;
         }
     }
     private void FixedUpdate()
@@ -61,7 +68,6 @@ public class CharacterAnimations : MonoBehaviour
         UnityEngine.Vector2 direction = gameObject.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float value = (float)((Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg));
         if (value < 0) value += 360f;
-        Debug.Log(value);
         return value;
     }
 }

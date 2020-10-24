@@ -27,6 +27,9 @@ public class Player : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Поиск противников в радиусе 1 юнита и отнятие у них здоровья в случае успеха
+    /// </summary>
     private void Attack()
     {
         attackAnim.PlayAttackAnimation();
@@ -42,6 +45,10 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Поиск npc в радиусе 1 юнита и вывод сообщения в случае успеха
+    /// </summary>
     private void SpeakToNpc()
     {
         var colliders = Physics2D.OverlapCircleAll(transform.position, 1);

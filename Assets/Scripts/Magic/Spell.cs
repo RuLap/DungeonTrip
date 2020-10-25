@@ -2,32 +2,49 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Spell : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
     SpellSO scriptableObject;
-    private Vector2 direction;
-    GameObject spell;
-    bool test = false;
-    /*private void Update()
+    private float duration;
+    private Vector3 cursorCast;
+    private Vector3 moveDirection;
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            spell = Instantiate(scriptableObject.skillPrefab);
-            spell.transform.position = gameObject.transform.position;
-            spell.transform.rotation = Quaternion.Euler(new Vector3(0,0,ViewingAngle()));
-            test = true;
-        }
+        duration = scriptableObject.duration;
+        cursorCast = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        cursorCast.z = 0f;
+        moveDirection = cursorCast - gameObject.transform.position;
+        moveDirection.z = 0;
+        moveDirection.Normalize();
     }
     private void FixedUpdate()
     {
-        if (test)
+        if (duration >= 0f)
         {
-            spell.transform.position += Vector3.right * scriptableObject.speed*Time.fixedDeltaTime;
+            switch (scriptableObject.spellType)
+            {
+                case SpellSO.SpellType.За_мышкой:
+                    gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), Time.fixedDeltaTime * scriptableObject.speed);
+                    break;
+                case SpellSO.SpellType.В_сторону_курсора:
+                    gameObject.transform.position = transform.position + moveDirection * scriptableObject.speed * Time.fixedDeltaTime;
+                    break;
+                case SpellSO.SpellType.На_земле:
+                    Transform let = gameObject.transform.Find("Container/Particle System");
+                    gameObject.transform.position = cursorCast;
+                    let.gameObject.transform.localScale += new Vector3(scriptableObject.speed*Time.fixedDeltaTime, scriptableObject.speed * Time.fixedDeltaTime, 0);
+                    break;
+            }
+            
+            duration -= Time.fixedDeltaTime;
         }
-    }*/
+        else
+            Destroy(this.gameObject);
+    }
     float ViewingAngle()
     {
         UnityEngine.Vector2 direction = gameObject.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);

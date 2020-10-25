@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9554a8757f749e7438b8786008d640eb, type: 3}
   m_Name: FireBallSO
   m_EditorClassIdentifier: 
-  school: 3
-  Damage: 0
-  speelPrefab: {fileID: 0}
+  school: 0
+  name: FireBall
+  damage: 15
+  duration: 3
+  speed: 3
+  skillPrefab: {fileID: 3873206533512684017, guid: 3ed23f75cad5ca244a3cbe2cf52cf381,
+    type: 3}

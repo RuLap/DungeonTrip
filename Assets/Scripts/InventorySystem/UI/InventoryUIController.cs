@@ -37,6 +37,8 @@ public class InventoryUIController : MonoBehaviour
     //описание предмета
     [SerializeField]
     private Text description;
+    [SerializeField]
+    private Text stats;
 
     void Start()
     {
@@ -118,6 +120,7 @@ public class InventoryUIController : MonoBehaviour
         SetButtonActive(equipButton);
         OnItemFocus(obj);
         ButtonClicked(obj);
+        PrintStats();
     }
 
     /// <summary>
@@ -132,6 +135,27 @@ public class InventoryUIController : MonoBehaviour
         SetButtonActive(dropButton);
         OnItemFocus(obj);
         ButtonClicked(obj);
+        PrintStats();
+    }
+
+    /// <summary>
+    /// Вывод характеристик выбранной экипировки
+    /// </summary>
+    /// <param name="index">Индекс выбранного предмета</param>
+    private void PrintStats()
+    {
+        int index = GetSelectionIndex();
+        string color = "<color=\"#ff5500\">";
+        if (inventory.Items[index] is ArmorItem)
+        {
+            stats.text = $"{color}Уровень:</color> {(inventory.Items[index] as ArmorItem).level}\n";
+            stats.text += $"{color}Защита:</color> {(inventory.Items[index] as ArmorItem).protection}\n";
+        }
+        else if (inventory.Items[index] is WeaponItem)
+        {
+            stats.text = $"{color}Уровень:</color> {(inventory.Items[index] as WeaponItem).level}\n";
+            stats.text += $"{color}Урон:</color> {(inventory.Items[index] as WeaponItem).damage}\n";
+        }
     }
 
     /// <summary>
@@ -143,7 +167,7 @@ public class InventoryUIController : MonoBehaviour
     {
         selected = obj;
         var index = GetSelectionIndex();
-        description.text = inventory.Items[index].Title + inventory.Items[index].Description;
+        description.text = $"<color=\"#ff5500\">{inventory.Items[index].Title}</color>\n{inventory.Items[index].Description}";
     }
 
     /// <summary>
@@ -159,6 +183,7 @@ public class InventoryUIController : MonoBehaviour
         SetButtonUnactive(equipButton);
         SetButtonUnactive(takeOffButton);
         description.text = string.Empty;
+        stats.text = string.Empty;
     }
 
     /// <summary>
@@ -313,6 +338,11 @@ public class InventoryUIController : MonoBehaviour
     public void OnPotionUse()
     {
         int index = GetSelectionIndex();
+        if((inventory.Items[index] as PotionItem).Count == 0)
+        {
+            return;
+        }
+
         inventory.UsePotion(index);
         OnInventoryChanged();
         OnPotionCountChanged();

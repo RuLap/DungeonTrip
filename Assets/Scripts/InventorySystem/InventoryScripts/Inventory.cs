@@ -110,14 +110,14 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void InitEquipments()
     {
-        items.Add(new ArmorItem(6, db.ItemsSprites[9], "", 100, 1, 5));
-        items.Add(new ArmorItem(7, db.ItemsSprites[10], "", 100, 1, 5));
-        items.Add(new ArmorItem(8, db.ItemsSprites[9], "", 100, 1, 5));
-        items.Add(new ArmorItem(9, db.ItemsSprites[9], "", 100, 1, 5));
-        items.Add(new WeaponItem(10, db.ItemsSprites[6], "", 100, 1, 5));
-        items.Add(new WeaponItem(11, db.ItemsSprites[7], "", 100, 1, 5));
-        items.Add(new WeaponItem(12, db.ItemsSprites[8], "", 100, 1, 5));
-        items.Add(new ArmorItem(13, db.ItemsSprites[9], "", 100, 1, 5));
+        items.Add(db.Armors[0]);
+        items.Add(db.Armors[1]);
+        items.Add(db.Armors[2]);
+        items.Add(db.Armors[3]);
+        items.Add(db.Swords[5]);
+        items.Add(db.Swords[6]);
+        items.Add(db.Swords[7]);
+        items.Add(db.Armors[4]);
     }
 
     /// <summary>

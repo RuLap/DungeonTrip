@@ -29,7 +29,7 @@ public class Npc : MonoBehaviour
         {
             return;
         }
-        messageUI.text = $"<color=\"blue\">{info.name}:</color>";
+        messageUI.text = $"<color=\"#ff5500\">{info.name}:</color> ";
         infoPanel.SetActive(true);
         StartCoroutine("WriteMessage");
         Time.timeScale = 0;

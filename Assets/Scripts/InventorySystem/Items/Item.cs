@@ -4,9 +4,9 @@ using UnityEngine;
 public class Item
 {
     protected int id;
-    protected string title;
-    protected string description;
-    protected Sprite sprite;
+    public string title;
+    public string description;
+    public Sprite sprite;
 
     public string Title { get { return title; } }
     public string Description { get { return description; } set { description = value; } }

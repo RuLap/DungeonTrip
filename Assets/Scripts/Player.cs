@@ -6,7 +6,7 @@ using System.Linq;
 public class Player : MonoBehaviour
 {
     private PlayerAttackAnimation attackAnim;
-    public GameObject TestSpell;
+
 
     void Start()
     {
@@ -25,11 +25,6 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             SpeakToNpc();
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            GameObject let = Instantiate(TestSpell);
-            let.transform.position = gameObject.transform.position;
         }
     }
 

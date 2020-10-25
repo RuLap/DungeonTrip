@@ -45,11 +45,4 @@ public class Spell : MonoBehaviour
         else
             Destroy(this.gameObject);
     }
-    float ViewingAngle()
-    {
-        UnityEngine.Vector2 direction = gameObject.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        float value = (float)((Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg));
-        if (value < 0) value += 360f;
-        return value;
-    }
 }

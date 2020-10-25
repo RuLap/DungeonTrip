@@ -100,6 +100,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void InitEquipments()
     {
+<<<<<<< Updated upstream
         items.Add(new ArmorItem(6, db.ItemsSprites[6], "", 100, 1, 5));
         items.Add(new ArmorItem(7, db.ItemsSprites[7], "", 100, 1, 5));
         items.Add(new ArmorItem(8, db.ItemsSprites[8], "", 100, 1, 5));
@@ -108,6 +109,16 @@ public class Inventory : MonoBehaviour
         items.Add(new ArmorItem(11, db.ItemsSprites[11], "", 100, 1, 5));
         items.Add(new ArmorItem(12, db.ItemsSprites[11], "", 100, 1, 5));
         items.Add(new ArmorItem(13, db.ItemsSprites[11], "", 100, 1, 5));
+=======
+        items.Add(db.Armors[0]);
+        items.Add(db.Armors[1]);
+        items.Add(db.Armors[2]);
+        items.Add(db.Armors[3]);
+        items.Add(db.Swords[5]);
+        items.Add(db.Swords[6]);
+        items.Add(db.Swords[7]);
+        items.Add(db.Armors[4]);
+>>>>>>> Stashed changes
     }
 
     /// <summary>

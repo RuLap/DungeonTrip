@@ -12,6 +12,13 @@ public class EquipmentDrop : Drop
     private GameObject dropStatsPanel;
     private Text stats;
     private Inventory inventory;
+    private AudioSource source;
+
+    [SerializeField]
+    private AudioClip take;
+    [SerializeField]
+    private AudioClip full;
+
 
     private void Start()
     {
@@ -23,6 +30,7 @@ public class EquipmentDrop : Drop
         item = GetRandomItem();
         sprite = item.Sprite;
         GetComponent<SpriteRenderer>().sprite = sprite;
+        source = GameObject.FindGameObjectWithTag("UIAudio").GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -48,7 +56,14 @@ public class EquipmentDrop : Drop
                     }
                     if (added)
                     {
+                        source.clip = take;
+                        source.Play();
                         Destroy(gameObject);
+                    }
+                    else
+                    {
+                        source.clip = full;
+                        source.Play();
                     }
                 }
             }

@@ -23,18 +23,21 @@ public class Inventory : MonoBehaviour
     public GameObject inventory;
     private bool isInventoryOpened = false;
 
+    private bool isStarted = false;
+
     private DataBase db;
     [SerializeField]
     private GameObject dbHolder;
 
     void Start()
     {
+        dbHolder = Camera.main.gameObject;
         db = dbHolder.GetComponent<DataBase>();
         InitPotions();
         InitEquipments();
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -91,7 +94,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void InitPotions()
     {
-        items.Add(new HealPotion(0, db.ItemsSprites[0], "Большое зельче лечения\n", 90, 0));
+        /*items.Add(new HealPotion(0, db.ItemsSprites[0], "Большое зельче лечения\n", 90, 0));
         items[0].Description = $"Восстанавливает {(items[0] as PotionItem).RefillValue} очков здоровья";
         items.Add(new HealPotion(1, db.ItemsSprites[1], "Среднее зелье лечения\n", 45, 10));
         items[1].Description = $"Восстанавливает {(items[1] as PotionItem).RefillValue} очков здоровья";
@@ -102,7 +105,11 @@ public class Inventory : MonoBehaviour
         items.Add(new ManaPotion(4, db.ItemsSprites[4], "Среднее зелье маны\n", 45, 5));
         items[4].Description = $"Восстанавливает {(items[4] as PotionItem).RefillValue} очков маны";
         items.Add(new ManaPotion(5, db.ItemsSprites[5], "Малое зелье маны\n", 15, 45));
-        items[5].Description = $"Восстанавливает {(items[5] as PotionItem).RefillValue} очков маны";
+        items[5].Description = $"Восстанавливает {(items[5] as PotionItem).RefillValue} очков маны";*/
+        for(int i = 0; i < 6; i++)
+        {
+            items.Add(db.Potions[i]);
+        }
     }
 
     /// <summary>

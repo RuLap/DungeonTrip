@@ -13,9 +13,11 @@ public class DataBase : MonoBehaviour
 
     public List<WeaponItem> Swords { get; } = new List<WeaponItem>();
     public List<ArmorItem> Armors { get; } = new List<ArmorItem>();
+    public List<PotionItem> Potions { get; } = new List<PotionItem>(6);
 
-    private void Start()
+    private void Awake()
     {
+        InitPotions();
         LoadFromJson();
         for (int i = 0; i < 6; i++)
         {
@@ -40,5 +42,21 @@ public class DataBase : MonoBehaviour
             Armors.Add(JsonUtility.FromJson<ArmorItem>(jsonString));
             Armors[i].sprite = Resources.Load<Sprite>($"Armor/{(i + 1).ToString()}");
         }
+    }
+
+    private void InitPotions()
+    {
+        Potions.Add(new HealPotion(0, ItemsSprites[0], "Большое зельче лечения\n", 90, 0));
+        Potions[0].Description = $"Восстанавливает {(Potions[0] as PotionItem).RefillValue} очков здоровья";
+        Potions.Add(new HealPotion(1, ItemsSprites[1], "Среднее зелье лечения\n", 45, 10));
+        Potions[1].Description = $"Восстанавливает {(Potions[1] as PotionItem).RefillValue} очков здоровья";
+        Potions.Add(new HealPotion(2, ItemsSprites[2], "Малое зелье лечения\n", 15, 99));
+        Potions[2].Description = $"Восстанавливает {(Potions[2] as PotionItem).RefillValue} очков здоровья";
+        Potions.Add(new ManaPotion(3, ItemsSprites[3], "Большое зелье маны\n", 90, 12));
+        Potions[3].Description = $"Восстанавливает {(Potions[3] as PotionItem).RefillValue} очков маны";
+        Potions.Add(new ManaPotion(4, ItemsSprites[4], "Среднее зелье маны\n", 45, 5));
+        Potions[4].Description = $"Восстанавливает {(Potions[4] as PotionItem).RefillValue} очков маны";
+        Potions.Add(new ManaPotion(5, ItemsSprites[5], "Малое зелье маны\n", 15, 45));
+        Potions[5].Description = $"Восстанавливает {(Potions[5] as PotionItem).RefillValue} очков маны";
     }
 }

@@ -92,17 +92,17 @@ public class Inventory : MonoBehaviour
     private void InitPotions()
     {
         items.Add(new HealPotion(0, db.ItemsSprites[0], "Большое зельче лечения\n", 90, 0));
-        items[0].Description = $"Восстанавливает {(items[0] as PotionItem).Refillvalue} очков здоровья";
+        items[0].Description = $"Восстанавливает {(items[0] as PotionItem).RefillValue} очков здоровья";
         items.Add(new HealPotion(1, db.ItemsSprites[1], "Среднее зелье лечения\n", 45, 10));
-        items[1].Description = $"Восстанавливает {(items[1] as PotionItem).Refillvalue} очков здоровья";
+        items[1].Description = $"Восстанавливает {(items[1] as PotionItem).RefillValue} очков здоровья";
         items.Add(new HealPotion(2, db.ItemsSprites[2], "Малое зелье лечения\n", 15, 99));
-        items[2].Description = $"Восстанавливает {(items[2] as PotionItem).Refillvalue} очков здоровья";
+        items[2].Description = $"Восстанавливает {(items[2] as PotionItem).RefillValue} очков здоровья";
         items.Add(new ManaPotion(3, db.ItemsSprites[3], "Большое зелье маны\n", 90, 12));
-        items[3].Description = $"Восстанавливает {(items[3] as PotionItem).Refillvalue} очков маны";
+        items[3].Description = $"Восстанавливает {(items[3] as PotionItem).RefillValue} очков маны";
         items.Add(new ManaPotion(4, db.ItemsSprites[4], "Среднее зелье маны\n", 45, 5));
-        items[4].Description = $"Восстанавливает {(items[4] as PotionItem).Refillvalue} очков маны";
+        items[4].Description = $"Восстанавливает {(items[4] as PotionItem).RefillValue} очков маны";
         items.Add(new ManaPotion(5, db.ItemsSprites[5], "Малое зелье маны\n", 15, 45));
-        items[5].Description = $"Восстанавливает {(items[5] as PotionItem).Refillvalue} очков маны";
+        items[5].Description = $"Восстанавливает {(items[5] as PotionItem).RefillValue} очков маны";
     }
 
     /// <summary>
@@ -124,20 +124,40 @@ public class Inventory : MonoBehaviour
     /// Добавляет предмет в инвентарь
     /// </summary>
     /// <param name="item">Предмет</param>
-    public void AddItem(Item item)
+    public bool AddItem(Item item)
     {
         if (item is PotionItem)
         {
-            (items[items.IndexOf(item)] as PotionItem).AddToStack(item as PotionItem);
+            for(int i = 0; i < 6; i++)
+            {
+                if((item as PotionItem).RefillType == (items[i] as PotionItem).RefillType)
+                {
+                    if((item as PotionItem).RefillValue == (items[i] as PotionItem).RefillValue)
+                    {
+                        if((items[i] as PotionItem).Count == 99)
+                        {
+                            return false;
+                        }
+                        (items[i] as PotionItem).AddToStack();
+                        return true;
+                    }
+                } 
+            }
+            return false;
         }
         else
         {
-            if (items.Count == size)
+            for(int i = 6; i < items.Count; i++)
             {
-                throw new Exception("Инвентарь заполнен!");
+                if(items[i] is null)
+                {
+                    items[i] = item;
+                    return true;
+                }
             }
-            items.Add(item);
+            Debug.Log("Инвентарь заполнен!");
         }
+        return false;
     }
 
     /// <summary>

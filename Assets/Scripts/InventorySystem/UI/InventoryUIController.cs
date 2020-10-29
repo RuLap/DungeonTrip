@@ -347,7 +347,7 @@ public class InventoryUIController : MonoBehaviour
         OnInventoryChanged();
         OnPotionCountChanged();
 
-        if(index > 0 && index < 3)
+        if(index >= 0 && index < 3)
         {
             audio.PlayHealUse();
         }

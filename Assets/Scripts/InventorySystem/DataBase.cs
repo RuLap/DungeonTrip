@@ -9,6 +9,7 @@ public class DataBase : MonoBehaviour
     [SerializeField]
     private List<Sprite> itemsSprites;
     public List<Sprite> ItemsSprites { get { return itemsSprites; } }
+    public List<Sprite> DropPotionsSprites { get; } = new List<Sprite>();
 
     public List<WeaponItem> Swords { get; } = new List<WeaponItem>();
     public List<ArmorItem> Armors { get; } = new List<ArmorItem>();
@@ -16,6 +17,10 @@ public class DataBase : MonoBehaviour
     private void Start()
     {
         LoadFromJson();
+        for (int i = 0; i < 6; i++)
+        {
+            DropPotionsSprites.Add(Resources.Load<Sprite>($"DropPotions/{(i + 1).ToString()}"));
+        }
     }
 
     private void LoadFromJson()

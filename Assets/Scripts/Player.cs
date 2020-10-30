@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     private float mana = 100;
     private float maxHealth = 100;
     private float maxMana = 100;
+    private Inventory inventory;
+    private AttackAudio audio;
 
     private Text healthText;
     private Text manaText;
@@ -34,6 +36,8 @@ public class Player : MonoBehaviour
         manaText = manaBar.GetComponentInChildren<Text>();
         manaBar = manaBar.GetComponent<Image>();
         nameText.text = name;
+        inventory = GetComponent<Inventory>();
+        audio = GetComponentInChildren<AttackAudio>();
     }
 
     void Update()
@@ -71,9 +75,11 @@ public class Player : MonoBehaviour
         {
             foreach (var collider in colliders)
             {
-                if (collider.CompareTag("Enemie"))
+                if (collider.TryGetComponent<Enemy>(out Enemy enemy))
                 {
                     //вызов получения урона у противников
+                    enemy.ApplyDamage((inventory.Items[12] as WeaponItem).damage);
+                    audio.PlayDamage();
                 }
             }
         }

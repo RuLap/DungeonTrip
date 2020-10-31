@@ -19,6 +19,5 @@ public class Enemy : MonoBehaviour
     {
         health -= damage;
         hpBar.fillAmount = health / maxHealth;
-        Debug.Log(health);
     }
 }

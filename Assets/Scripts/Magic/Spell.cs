@@ -12,6 +12,7 @@ public class Spell : MonoBehaviour
     private float duration;
     private Vector3 cursorCast;
     private Vector3 moveDirection;
+    private AudioSource audioSource;
     private void Start()
     {
         duration = scriptableObject.duration;
@@ -20,6 +21,8 @@ public class Spell : MonoBehaviour
         moveDirection = cursorCast - gameObject.transform.position;
         moveDirection.z = 0;
         moveDirection.Normalize();
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.PlayOneShot(scriptableObject.sound);
     }
     private void FixedUpdate()
     {

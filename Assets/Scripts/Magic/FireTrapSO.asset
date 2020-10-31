@@ -18,3 +18,4 @@ MonoBehaviour:
   damage: 25
   duration: 7
   speed: 0
+  sound: {fileID: 8300000, guid: 8f6432cd5b3249c4e81abeddadcb9cce, type: 3}

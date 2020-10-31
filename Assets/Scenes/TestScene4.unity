@@ -27465,6 +27465,7 @@ GameObject:
   - component: {fileID: 1180115898}
   - component: {fileID: 1180115897}
   - component: {fileID: 1180115896}
+  - component: {fileID: 1180115902}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -27562,7 +27563,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e45078770c9a9c41a17efdf67ee80f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TestSpell: {fileID: 41304588606506979, guid: e2f4080db69c0f045884f4e266cb4591, type: 3}
 --- !u!114 &1180115901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27576,6 +27576,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: 6cf430f3486c0574382bab320fc90545, type: 3}
+--- !u!114 &1180115902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180115894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc121afad345e5346b010fe6529702d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testSpell1: {fileID: 1710961077753445477, guid: 6df4e6abbdc6df14d8d0ccb80c899b50,
+    type: 3}
+  testSpell2: {fileID: 7821653613013484415, guid: 074f6f1f6e5b48b439b8a2eb9f06d2b4,
+    type: 3}
+  testSpell3: {fileID: 1550142888479726089, guid: b73a868150ecaf14188f1024150326a4,
+    type: 3}
+  testSpell4: {fileID: 7821653613013484415, guid: 074f6f1f6e5b48b439b8a2eb9f06d2b4,
+    type: 3}
 --- !u!1 &1355095139
 GameObject:
   m_ObjectHideFlags: 0
@@ -30856,7 +30876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1517621338
 RectTransform:
   m_ObjectHideFlags: 0

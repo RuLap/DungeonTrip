@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9554a8757f749e7438b8786008d640eb, type: 3}
-  m_Name: FireWaveSO
+  m_Name: EarthBoulder
   m_EditorClassIdentifier: 
-  school: 0
-  name: "\u041E\u0433\u043D\u0435\u043D\u043D\u0430\u044F \u0432\u043E\u043B\u043D\u0430"
-  spellType: 0
-  damage: 15
-  duration: 3
-  speed: 5
-  sound: {fileID: 8300000, guid: 8f6432cd5b3249c4e81abeddadcb9cce, type: 3}
+  school: 3
+  name: "\u041A\u0430\u043C\u0435\u043D\u043D\u0430\u044F \u0433\u043B\u044B\u0431\u0430"
+  spellType: 2
+  damage: 25
+  duration: 2
+  speed: 8
+  sound: {fileID: 8300000, guid: 0b9adeed1de82d1459a3dcb7402f36e7, type: 3}

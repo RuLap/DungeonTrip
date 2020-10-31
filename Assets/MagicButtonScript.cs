@@ -7,16 +7,20 @@ public class MagicButtonScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject magic;
+    public GameObject selective;
     private MagicManager magicManager;
     private SpellSO spellSO;
     void Start()
     {
+        selective.SetActive(false);
         magicManager = GameObject.Find("Player").GetComponent<MagicManager>();
         spellSO = magic.GetComponent<Spell>().scriptableObject;
         gameObject.GetComponentInChildren<Text>().text = spellSO.name;
     }
     public void ClickOnButton()
     {
+        selective.SetActive(true);
+        selective.transform.position = gameObject.transform.position;
         switch (spellSO.school)
         {
             case SpellSO.School.Fire:

@@ -19,23 +19,35 @@ public class MagicManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            GameObject let = Instantiate(testSpell1);
-            let.transform.position = gameObject.transform.position;
+            if (testSpell1 != null)
+            {
+                GameObject let = Instantiate(testSpell1);
+                let.transform.position = gameObject.transform.position;
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            GameObject let = Instantiate(testSpell2);
-            let.transform.position = gameObject.transform.position;
+            if (testSpell2 != null)
+            {
+                GameObject let = Instantiate(testSpell2);
+                let.transform.position = gameObject.transform.position;
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            GameObject let = Instantiate(testSpell3);
-            let.transform.position = gameObject.transform.position;
+            if (testSpell3 != null)
+            {
+                GameObject let = Instantiate(testSpell3);
+                let.transform.position = gameObject.transform.position;
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            GameObject let = Instantiate(testSpell4);
-            let.transform.position = gameObject.transform.position;
+            if (testSpell4 != null)
+            {
+                GameObject let = Instantiate(testSpell4);
+                let.transform.position = gameObject.transform.position;
+            }
         }
     }
 }

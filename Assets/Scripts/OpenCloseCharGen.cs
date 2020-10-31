@@ -13,6 +13,7 @@ public class OpenCloseCharGen : MonoBehaviour
     Animator anim;
     //Открыт ли инвентарь?
     private bool state = false;
+    public GameObject magic;
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
@@ -28,6 +29,10 @@ public class OpenCloseCharGen : MonoBehaviour
             else
                 clickOnOff();
             state = !state;
+        }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            magic.SetActive(!magic.activeSelf);
         }
     }
     /// <summary>

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9554a8757f749e7438b8786008d640eb, type: 3}
+  m_Name: EarthBoulder
+  m_EditorClassIdentifier: 
+  school: 3
+  name: "\u041A\u0430\u043C\u0435\u043D\u043D\u0430\u044F \u0433\u043B\u044B\u0431\u0430"
+  spellType: 2
+  damage: 25
+  duration: 2
+  speed: 8
+  sound: {fileID: 8300000, guid: 0b9adeed1de82d1459a3dcb7402f36e7, type: 3}

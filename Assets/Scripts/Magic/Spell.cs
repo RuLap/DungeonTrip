@@ -8,7 +8,7 @@ public class Spell : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    SpellSO scriptableObject;
+    public SpellSO scriptableObject;
     private float duration;
     private Vector3 cursorCast;
     private Vector3 moveDirection;

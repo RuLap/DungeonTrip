@@ -6,6 +6,7 @@ using System.Linq;
 public class Player : MonoBehaviour
 {
     private PlayerAttackAnimation attackAnim;
+    
 
 
     void Start()

@@ -56,7 +56,7 @@ public class Npc : MonoBehaviour
         {
             msg += info.message[i];
             messageUI.text = msg;
-            yield return new WaitForSecondsRealtime(0.1f);
+            yield return new WaitForSecondsRealtime(0.06f);
         }
     }
 }

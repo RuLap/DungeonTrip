@@ -86,6 +86,7 @@ public class InventoryUIController : MonoBehaviour
         inventory.InventoryIsClosed();
     }
 
+
     /// <summary>
     /// Делает кнопку недоступной для нажатия
     /// </summary>
@@ -141,7 +142,6 @@ public class InventoryUIController : MonoBehaviour
     /// <summary>
     /// Вывод характеристик выбранной экипировки
     /// </summary>
-    /// <param name="index">Индекс выбранного предмета</param>
     private void PrintStats()
     {
         int index = GetSelectionIndex();
@@ -347,7 +347,7 @@ public class InventoryUIController : MonoBehaviour
         OnInventoryChanged();
         OnPotionCountChanged();
 
-        if(index > 0 && index < 3)
+        if(index >= 0 && index < 3)
         {
             audio.PlayHealUse();
         }

@@ -7,6 +7,10 @@ TagManager:
   - InventoryCell
   - Enemie
   - NPC
+  - Drop
+  - DropInfo
+  - UIAudio
+  - EffectsAudio
   layers:
   - Default
   - TransparentFX

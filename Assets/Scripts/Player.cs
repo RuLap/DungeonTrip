@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void ApplyDamage(int damage)
+    public void ApplyDamage(float damage)
     {
         health -= damage;
         if (health < 0) health = 0;

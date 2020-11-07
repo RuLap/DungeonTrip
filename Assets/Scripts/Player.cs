@@ -14,22 +14,31 @@ public class Player : MonoBehaviour
     private float maxMana = 100;
     private Inventory inventory;
     private AttackAudio audio;
+    private PlayerXP playerXP;
 
     private Text healthText;
     private Text manaText;
     [SerializeField]
     private Text nameText;
+    private Text xpText;
 
     [SerializeField]
     private Image hpBar;
     [SerializeField]
     private Image manaBar;
+    [SerializeField]
+    private Image xpBar;
 
     public float Health { get { return health; } }
     public float Mana { get { return mana; } }
-
+    public PlayerXP PlayerXP { get { return playerXP; } }
     void Start()
     {
+        playerXP = PlayerXP.LoadFromJson();
+        xpBar = xpBar.GetComponent<Image>();
+        xpText = xpBar.GetComponentInChildren<Text>();
+        xpText.text = playerXP.CurrentLevel.ToString();
+        xpBar.fillAmount = playerXP.GetFillAmount();
         attackAnim = GetComponentInChildren<PlayerAttackAnimation>();
         healthText = hpBar.GetComponentInChildren<Text>();
         hpBar = hpBar.GetComponent<Image>();
@@ -62,6 +71,20 @@ public class Player : MonoBehaviour
         {
             ReduceMana(5);
         }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            playerXP.SaveToJson();
+        }
+    }
+
+    public void AddXP(int xp)
+    {
+        var isLevelUp = playerXP.AddPoints(xp);
+        if (isLevelUp)
+        {
+            xpText.text = playerXP.CurrentLevel.ToString();
+        }
+        xpBar.fillAmount = playerXP.GetFillAmount();
     }
 
     /// <summary>
@@ -104,6 +127,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Получение урона
+    /// </summary>
+    /// <param name="damage">Урон</param>
     private void ApplyDamage(int damage)
     {
         health -= damage;
@@ -112,6 +139,10 @@ public class Player : MonoBehaviour
         healthText.text = health.ToString();
     }
 
+    /// <summary>
+    /// Отнимает очки магии
+    /// </summary>
+    /// <param name="value">Сколько отнять</param>
     private void ReduceMana(int value)
     {
         mana -= value;

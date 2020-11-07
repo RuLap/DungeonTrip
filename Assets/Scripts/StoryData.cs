@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class IntroData
+public class StoryData
 {
     public string story;
 
-    public static IntroData CreateFromJSON(string json)
+    public static StoryData CreateFromJSON(string json)
     {
         var jsonPath = Application.dataPath + "/StreamingAssets/" + json + ".json";
         var jsonString = File.ReadAllText(jsonPath);
-        return JsonUtility.FromJson<IntroData>(jsonString);
+        return JsonUtility.FromJson<StoryData>(jsonString);
     }
 }

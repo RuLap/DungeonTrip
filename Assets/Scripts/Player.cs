@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    [Header("Статы")]
     private string name = "Jack";
     private PlayerAttackAnimation attackAnim;
     private float health = 100;
@@ -14,12 +15,13 @@ public class Player : MonoBehaviour
     private float maxMana = 100;
     private Inventory inventory;
     private AttackAudio audio;
-
+    private bool invincible = false;
+    [Header("Тексты")]
     private Text healthText;
     private Text manaText;
     [SerializeField]
     private Text nameText;
-
+    [Header("Изображения")]
     [SerializeField]
     private Image hpBar;
     [SerializeField]
@@ -106,10 +108,14 @@ public class Player : MonoBehaviour
 
     private void ApplyDamage(int damage)
     {
-        health -= damage;
-        if (health < 0) health = 0;
-        hpBar.fillAmount = health / maxHealth;
-        healthText.text = health.ToString();
+        if (!invincible)
+        {
+            StartCoroutine(SetInvincible());
+            health -= damage;
+            if (health < 0) health = 0;
+            hpBar.fillAmount =(float) health / maxHealth;
+            healthText.text = health.ToString();
+        }
     }
 
     private void ReduceMana(int value)
@@ -118,5 +124,19 @@ public class Player : MonoBehaviour
         if (mana < 0) mana = 0;
         manaBar.fillAmount = mana / maxMana;
         manaText.text = mana.ToString();
+    }
+    
+    IEnumerator SetInvincible()
+    {
+        invincible = true;
+        yield return new WaitForSeconds(0.5f);
+        invincible = false;
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Enemy>() != null)
+        {
+            ApplyDamage(collision.gameObject.GetComponent<Enemy>().enemyDamage);
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -74,6 +75,10 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             playerXP.SaveToJson();
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            SceneManager.LoadScene("Ending");
         }
     }
 

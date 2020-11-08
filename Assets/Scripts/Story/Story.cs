@@ -77,6 +77,13 @@ public class Story : MonoBehaviour
                 yield return new WaitForSecondsRealtime(0.05f);
             }
             yield return new WaitForSecondsRealtime(2);
+            if (isIntro)
+            {
+                storyText.text = string.Empty;
+            }
+        }
+        if (!isIntro)
+        {
             StartCoroutine(FadeText());
             credits.SetActive(true);
         }

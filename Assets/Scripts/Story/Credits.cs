@@ -32,6 +32,6 @@ public class Credits : MonoBehaviour
             nameText.color = new Color(nameText.color.r, nameText.color.g, nameText.color.b, nameText.color.a + 0.05f);
             yield return new WaitForSecondsRealtime(0.15f);
         }
-        SceneManager.LoadScene("Magic");
+        SceneManager.LoadScene("Beginning");
     }
 }

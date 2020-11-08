@@ -119,7 +119,7 @@ public class Inventory : MonoBehaviour
     {
         items.Add(db.Armors[0]);
         items.Add(db.Armors[1]);
-        items.Add(db.Armors[2]);
+        items.Add(db.Armors[5]);
         items.Add(db.Armors[3]);
         items.Add(db.Swords[5]);
         items.Add(db.Swords[6]);

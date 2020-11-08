@@ -4,18 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Intro : MonoBehaviour
+public class Story : MonoBehaviour
 {
-    private IntroData data;
+    private StoryData data;
     private Text storyText;
     private string[] sentences;
     [SerializeField]
     private Text skipText;
+    private bool isIntro;
+    [SerializeField]
+    private GameObject credits;
 
     void Start()
     {
+        isIntro = SceneManager.GetActiveScene().name == "Beginning" ? true : false;
         storyText = GetComponentInChildren<Text>();
-        data = IntroData.CreateFromJSON("Intro");
+        if (isIntro)
+            data = StoryData.CreateFromJSON("Intro");
+        else
+            data = StoryData.CreateFromJSON("Ending");
+        data.story = data.story.Replace("{Имя главного героя}", "Перс");
         sentences = data.story.Split('|');
         StartCoroutine(PrintText());
         skipText.enabled = false;
@@ -27,8 +35,15 @@ public class Intro : MonoBehaviour
         {
             if (skipText.enabled)
             {
-                PlayerPrefs.SetString("Scene", "Magic");
-                SceneManager.LoadScene("LoadScreen");
+                if (isIntro)
+                {
+                    PlayerPrefs.SetString("Scene", "Magic");
+                    SceneManager.LoadScene("LoadScreen");
+                }
+                else
+                {
+                    SceneManager.LoadScene("Magic");//сделать главное меню
+                }
             }
         }
         if (Input.anyKeyDown)
@@ -62,7 +77,28 @@ public class Intro : MonoBehaviour
                 yield return new WaitForSecondsRealtime(0.05f);
             }
             yield return new WaitForSecondsRealtime(2);
-            storyText.text = string.Empty;
+            if (isIntro)
+            {
+                storyText.text = string.Empty;
+            }
+        }
+        if (!isIntro)
+        {
+            StartCoroutine(FadeText());
+            credits.SetActive(true);
+        }
+    }
+
+    /// <summary>
+    /// Затемнение текста
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator FadeText()
+    {
+        while(storyText.color.a > 0)
+        {
+            storyText.color = new Color(storyText.color.r, storyText.color.g, storyText.color.b, storyText.color.a - 0.05f);
+            yield return new WaitForSecondsRealtime(0.05f);
         }
     }
 }

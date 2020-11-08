@@ -9,9 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Magic.unity
     guid: ba68fb0f7d183704daab4934012e6b62
   - enabled: 1
-    path: Assets/Scenes/LoadScreen.unity
-    guid: 028db075664df674186041843f06c1c6
-  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 99c07bfdadbf60b4f8312e6b861179b8
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: d8115bb4f29b7444cabe39e5fd1476ce
+  - enabled: 1
+    path: Assets/Scenes/Beginning.unity
+    guid: 878fdec6622d3c7408e03b0698451d5a
+  - enabled: 1
+    path: Assets/Scenes/LoadScreen.unity
+    guid: 028db075664df674186041843f06c1c6
   m_configObjects: {}

@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
         {
             var player = GameObject.FindObjectOfType<Player>();
             int xp;
-            xp = player.PlayerXP.maxPoints / 10 - ((player.PlayerXP.currentLevel - level) * 10);
+            xp = player.PlayerXP.maxPoints / 10 - ((player.PlayerXP.currentLevel - level) * 20);
             player.AddXP(xp);
         }
     }

@@ -79,6 +79,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Добавляет опыт
+    /// </summary>
+    /// <param name="xp"></param>
     public void AddXP(int xp)
     {
         var isLevelUp = playerXP.AddPoints(xp);

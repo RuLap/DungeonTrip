@@ -1,9 +1,10 @@
 ﻿using System;
 using UnityEngine;
+using System.IO;
 
 public class Item
 {
-    protected int id;
+    public int id;
     public string title;
     public string description;
     public int price;

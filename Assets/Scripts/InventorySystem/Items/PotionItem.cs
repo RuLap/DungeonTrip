@@ -13,11 +13,11 @@ public class PotionItem : Item
     protected RefillType refillType;
     protected int refillValue;
 
-    public int Count { get { return count; } }
+    public int Count { get { return count; } set { count = value; } }
     public int RefillValue { get { return refillValue; } }
     public RefillType RefillType { get; set; }
 
-    public PotionItem(int _id, Sprite _sprite, string _title, int _refillValue, int _price, int _count) : base(_id, _sprite, _title, _price)
+    public PotionItem(int _id, Sprite _sprite, string _title, int _refillValue, int _count, int _price) : base(_id, _sprite, _title, _price)
     {
         maxCount = 99;
         count = _count;
@@ -35,6 +35,9 @@ public class PotionItem : Item
         }
     }
 
+    /// <summary>
+    /// Использовать
+    /// </summary>
     public void Use()
     {
         if (count > 0)

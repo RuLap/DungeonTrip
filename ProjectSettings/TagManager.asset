@@ -8,6 +8,10 @@ TagManager:
   - Enemie
   - NPC
   - ShopCell
+  - Drop
+  - DropInfo
+  - UIAudio
+  - EffectsAudio
   layers:
   - Default
   - TransparentFX

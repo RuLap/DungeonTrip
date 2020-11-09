@@ -20,6 +20,8 @@ public class InventoryAudio : MonoBehaviour
     private AudioClip dropArmor;
     [SerializeField]
     private AudioClip dropSword;
+    [SerializeField]
+    private AudioClip exitButton;
 
     private AudioSource source;
 
@@ -97,6 +99,12 @@ public class InventoryAudio : MonoBehaviour
     public void PlayDropSword()
     {
         source.clip = dropSword;
+        source.Play();
+    }
+
+    public void PlayExitButton()
+    {
+        source.clip = exitButton;
         source.Play();
     }
 }

@@ -536,18 +536,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1788500204}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 323ba0da986436747adafac2b4f251ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 093fc4d8bb011184aae07cefa8abda52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  text: {fileID: 0}
-  sprites:
-  - {fileID: 21300000, guid: e2c3f30627edb4149894a4bd65552e54, type: 3}
-  - {fileID: 21300000, guid: b5c400b02c3951247b05e72b8330fee5, type: 3}
-  - {fileID: 21300000, guid: ff2015dc956284c41ab80ea17385a29e, type: 3}
-  - {fileID: 21300000, guid: 26a62d574ee2f3441b0e254ae224c266, type: 3}
-  - {fileID: 21300000, guid: 70fbf8400eb241e43a828f5b346631d0, type: 3}
-  sprite: {fileID: 1175125600}
+  skipText: {fileID: 0}
 --- !u!1 &1832790526
 GameObject:
   m_ObjectHideFlags: 0

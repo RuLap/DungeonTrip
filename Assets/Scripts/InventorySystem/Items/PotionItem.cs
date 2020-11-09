@@ -13,11 +13,11 @@ public class PotionItem : Item
     protected RefillType refillType;
     protected int refillValue;
 
-    public int Count { get { return count; } }
+    public int Count { get { return count; } set { count = value; } }
     public int RefillValue { get { return refillValue; } }
     public RefillType RefillType { get; set; }
 
-    public PotionItem(int _id, Sprite _sprite, string _title, int _refillValue, int _count) : base(_id, _sprite, _title)
+    public PotionItem(int _id, Sprite _sprite, string _title, int _refillValue, int _count, int _price) : base(_id, _sprite, _title, _price)
     {
         maxCount = 99;
         count = _count;
@@ -47,8 +47,8 @@ public class PotionItem : Item
 [System.Serializable]
 public class HealPotion : PotionItem
 {
-    public HealPotion(int _id, Sprite _sprite, string _title, int _refillValue, int _count = 0) 
-        : base(_id, _sprite, _title, _refillValue, _count)
+    public HealPotion(int _id, Sprite _sprite, string _title, int _refillValue, int _price, int _count = 0) 
+        : base(_id, _sprite, _title, _refillValue, _price, _count)
     {
         refillType = RefillType.Health;
     }
@@ -57,8 +57,8 @@ public class HealPotion : PotionItem
 [System.Serializable]
 public class ManaPotion : PotionItem
 {
-    public ManaPotion(int _id, Sprite _sprite, string _title, int _refillValue, int _count = 0) 
-        : base(_id, _sprite, _title, _refillValue, _count)
+    public ManaPotion(int _id, Sprite _sprite, string _title, int _refillValue, int _price, int _count = 0) 
+        : base(_id, _sprite, _title, _refillValue, _price, _count)
     {
         refillType = RefillType.Mana;
     }

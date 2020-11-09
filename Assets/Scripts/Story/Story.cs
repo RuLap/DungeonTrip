@@ -17,13 +17,14 @@ public class Story : MonoBehaviour
 
     void Start()
     {
+        string name = PlayerStats.LoadFromJson().name;
         isIntro = SceneManager.GetActiveScene().name == "Beginning" ? true : false;
         storyText = GetComponentInChildren<Text>();
         if (isIntro)
             data = StoryData.CreateFromJSON("Intro");
         else
             data = StoryData.CreateFromJSON("Ending");
-        data.story = data.story.Replace("{Имя главного героя}", "Перс");
+        data.story = data.story.Replace("{Имя главного героя}", name);
         sentences = data.story.Split('|');
         StartCoroutine(PrintText());
         skipText.enabled = false;

@@ -49,17 +49,17 @@ public class DataBase : MonoBehaviour
     /// </summary>
     private void InitPotions()
     {
-        Potions.Add(new HealPotion(0, ItemsSprites[0], "Большое зельче лечения\n", 90, 0));
+        Potions.Add(new HealPotion(0, ItemsSprites[0], "Большое зельче лечения\n", 90, 100, 0));
         Potions[0].Description = $"Восстанавливает {(Potions[0] as PotionItem).RefillValue} очков здоровья";
-        Potions.Add(new HealPotion(1, ItemsSprites[1], "Среднее зелье лечения\n", 45, 10));
+        Potions.Add(new HealPotion(1, ItemsSprites[1], "Среднее зелье лечения\n", 45, 50, 10));
         Potions[1].Description = $"Восстанавливает {(Potions[1] as PotionItem).RefillValue} очков здоровья";
-        Potions.Add(new HealPotion(2, ItemsSprites[2], "Малое зелье лечения\n", 15, 99));
+        Potions.Add(new HealPotion(2, ItemsSprites[2], "Малое зелье лечения\n", 15, 25, 99));
         Potions[2].Description = $"Восстанавливает {(Potions[2] as PotionItem).RefillValue} очков здоровья";
-        Potions.Add(new ManaPotion(3, ItemsSprites[3], "Большое зелье маны\n", 90, 12));
+        Potions.Add(new ManaPotion(3, ItemsSprites[3], "Большое зелье маны\n", 90, 100, 12));
         Potions[3].Description = $"Восстанавливает {(Potions[3] as PotionItem).RefillValue} очков маны";
-        Potions.Add(new ManaPotion(4, ItemsSprites[4], "Среднее зелье маны\n", 45, 5));
+        Potions.Add(new ManaPotion(4, ItemsSprites[4], "Среднее зелье маны\n", 45, 50, 5));
         Potions[4].Description = $"Восстанавливает {(Potions[4] as PotionItem).RefillValue} очков маны";
-        Potions.Add(new ManaPotion(5, ItemsSprites[5], "Малое зелье маны\n", 15, 45));
+        Potions.Add(new ManaPotion(5, ItemsSprites[5], "Малое зелье маны\n", 15, 25, 45));
         Potions[5].Description = $"Восстанавливает {(Potions[5] as PotionItem).RefillValue} очков маны";
     }
 }

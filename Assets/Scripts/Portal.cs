@@ -13,6 +13,12 @@ public class Portal : MonoBehaviour
         {
             if (collision.TryGetComponent<Player>(out Player player))
             {
+                string sceneName = SceneManager.GetActiveScene().name;
+                if (sceneName.Contains("Boss"))
+                {
+                    SaveSystem.Info.Level++;
+                }
+                SaveSystem.SaveGame();
                 PlayerPrefs.SetString("Scene", sceneName);
                 SceneManager.LoadScene("LoadScreen");
             }

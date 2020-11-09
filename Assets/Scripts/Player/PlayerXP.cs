@@ -11,7 +11,7 @@ public class PlayerXP
 
     public int CurrentLevel { get { return currentLevel; } }
 
-    public static PlayerXP LoadFromJson(string json = "NewPlayerXP")
+    public static PlayerXP LoadFromJson(string json)
     {
         var jsonPath = Application.dataPath + "/StreamingAssets/" + json + ".json";
         var jsonString = File.ReadAllText(jsonPath);

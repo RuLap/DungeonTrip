@@ -22,10 +22,6 @@ public class InventorySaveInfo
         File.WriteAllText(jsonPath, jsonString);
     }
 
-    /// <summary>
-    /// Получает обновленные данные для сохранения
-    /// </summary>
-    /// <param name="items">Предметы инвентаря</param>
     public void Refresh(List<Item> items)
     {
         for(int i = 0; i < 6; i++)

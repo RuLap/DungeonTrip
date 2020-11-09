@@ -5,20 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class MenuWork : MonoBehaviour
 {
-    private SaveSystem saveSystem;
     private void Start()
     {
-        saveSystem = new SaveSystem();
     }
     public void ContinuePressed()
     {
-        saveSystem.LoadGame();
+        PlayerPrefs.SetString("PlayerJson", "PlayerXP");
+        SaveSystem.LoadGame();
         //SceneManager.LoadScene("TestScene4");
     }
 
     public void NewGamePressed()
     {
-        saveSystem.NewGame();
+        PlayerPrefs.SetString("PlayerJson", "NewPlayerXP");
+        SaveSystem.NewGame();
         //SceneManager.LoadScene("TestScene5");
     }
 

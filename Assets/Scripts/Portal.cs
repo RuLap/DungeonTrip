@@ -9,10 +9,15 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (SceneManager.GetActiveScene().name == sceneName)
+        if (SceneManager.GetActiveScene().name != sceneName)
         {
             if (collision.TryGetComponent<Player>(out Player player))
             {
+                string sceneName = SceneManager.GetActiveScene().name;
+                if (sceneName.Contains("Boss"))
+                {
+                    SaveSystem.Info.Level++;
+                }
                 SaveSystem.SaveGame();
                 PlayerPrefs.SetString("Scene", sceneName);
                 SceneManager.LoadScene("LoadScreen");

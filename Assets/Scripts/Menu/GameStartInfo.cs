@@ -5,6 +5,7 @@ using System.IO;
 
 public class GameStartInfo
 {
+    public string name;
     public int Level;
     public static GameStartInfo LoadFromJson()
     {

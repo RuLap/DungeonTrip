@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SaveSystem
+public static class SaveSystem
 {
     private static GameStartInfo info = GameStartInfo.LoadFromJson();
+    public static GameStartInfo Info { get { return info; } }
 
-    public SaveSystem()
-    {
-        
-    }
     public static void SaveGame()
     {
         var player = GameObject.FindObjectOfType<Player>();
@@ -23,7 +20,7 @@ public class SaveSystem
         
     }
 
-    public void LoadGame()
+    public static void LoadGame()
     {
         if (info.Level == 0)
         {
@@ -35,7 +32,7 @@ public class SaveSystem
         }
     }
 
-    public void NewGame()
+    public static void NewGame()
     {
         SceneManager.LoadScene("Beginning");
     }

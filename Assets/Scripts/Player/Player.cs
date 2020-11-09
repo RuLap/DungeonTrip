@@ -33,7 +33,9 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        playerXP = PlayerXP.LoadFromJson();
+        playerXP = PlayerXP.LoadFromJson("NewPlayerXP"); 
+        //Commented for debug
+        //playerXP = PlayerXP.LoadFromJson(PlayerPrefs.GetString("PlayerJson"));
         playerStats = PlayerStats.LoadFromJson();
         xpBar = xpBar.GetComponent<Image>();
         xpText = xpBar.GetComponentInChildren<Text>();

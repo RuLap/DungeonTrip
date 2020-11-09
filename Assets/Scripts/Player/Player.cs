@@ -23,6 +23,40 @@ public class Player : MonoBehaviour
                 Attack();
             }
         }
+<<<<<<< Updated upstream
+=======
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SpeakToNpc();
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            ApplyDamage(10);
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            ReduceMana(5);
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            playerXP.SaveToJson();
+        }
+    }
+
+    /// <summary>
+    /// Добавление опыта при убийстве врага
+    /// </summary>
+    /// <param name="xp">Опыт</param>
+    public void AddXP(int xp)
+    {
+        var isLevelUp = playerXP.AddPoints(xp);
+        if (isLevelUp)
+        {
+            xpText.text = playerXP.CurrentLevel.ToString();
+        }
+        xpBar.fillAmount = playerXP.GetFillAmount();
+>>>>>>> Stashed changes
     }
 
     private void Attack()

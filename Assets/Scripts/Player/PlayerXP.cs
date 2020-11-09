@@ -25,6 +25,11 @@ public class PlayerXP
         File.WriteAllText(jsonPath, jsonString);
     }
 
+    /// <summary>
+    /// Добавить очки опыта
+    /// </summary>
+    /// <param name="value">Количество</param>
+    /// <returns>Переход на новый ровень</returns>
     public bool AddPoints(int value)
     {
         points += value;
@@ -36,6 +41,9 @@ public class PlayerXP
         return false;
     }
 
+    /// <summary>
+    /// Повышение уровня
+    /// </summary>
     private void LevelUp()
     {
         int overflow = maxPoints - points;
@@ -44,6 +52,10 @@ public class PlayerXP
         maxPoints = currentLevel * 200;
     }
 
+    /// <summary>
+    /// Считает заполненность шкалы
+    /// </summary>
+    /// <returns></returns>
     public float GetFillAmount()
     {
         if (points == 0) return 0;

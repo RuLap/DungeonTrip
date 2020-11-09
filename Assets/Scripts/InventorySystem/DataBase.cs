@@ -44,6 +44,9 @@ public class DataBase : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Инициализирует зелья
+    /// </summary>
     private void InitPotions()
     {
         Potions.Add(new HealPotion(0, ItemsSprites[0], "Большое зельче лечения\n", 90, 0));

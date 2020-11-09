@@ -35,6 +35,9 @@ public class PotionItem : Item
         }
     }
 
+    /// <summary>
+    /// Использовать
+    /// </summary>
     public void Use()
     {
         if (count > 0)

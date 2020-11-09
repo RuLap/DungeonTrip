@@ -3,5 +3,6 @@
     "description": "Вы конечно уже всякого повидали, но этот меч вас удивил",
     "Level": 1,
     "damage": 1,
-    "spriteInt": 1
+    "spriteInt": 1,
+    "price": 200
 }

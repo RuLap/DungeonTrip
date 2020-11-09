@@ -3,5 +3,6 @@
     "description": "Ни на что не годится",
     "Level": 1,
     "damage": 1,
-    "spriteInt": 1
+    "spriteInt": 1,
+    "price": 10
 }

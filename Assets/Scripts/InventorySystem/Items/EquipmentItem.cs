@@ -6,8 +6,7 @@ public abstract class EquipmentItem : Item
 {
     protected int quality;
     public int level;
-
-    public EquipmentItem(int _id, Sprite _sprite, string _title, int _quality, int _level) : base(_id, _sprite, _title)
+    public EquipmentItem(int _id, Sprite _sprite, string _title, int _quality, int _level, int _price) : base(_id, _sprite, _title, _price)
     {
         quality = _quality;
         level = _level;

@@ -3,5 +3,6 @@
     "description": "Уже что-то",
     "Level": 1,
     "damage": 1,
-    "spriteInt": 1
+    "spriteInt": 1,
+    "price": 30
 }

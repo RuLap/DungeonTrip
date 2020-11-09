@@ -3,5 +3,6 @@
     "description": "Разве что убить слабого противника",
     "Level": 1,
     "damage": 1,
-    "spriteInt": 2
+    "spriteInt": 2,
+    "price": 25
 }

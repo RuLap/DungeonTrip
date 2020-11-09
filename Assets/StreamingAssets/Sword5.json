@@ -3,5 +3,6 @@
     "description": "Враги уже не будут смотреть на тебя как на лёгкую добычу",
     "Level": 1,
     "damage": 1,
-    "spriteInt": 1
+    "spriteInt": 1,
+    "price": 100
 }

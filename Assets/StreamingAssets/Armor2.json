@@ -2,5 +2,6 @@
     "title": "Подкладка",
     "description": "Защищает больше от ударов палкой",
     "level": 1,
-    "protection": 1
+    "protection": 1,
+    "price": 14
 }

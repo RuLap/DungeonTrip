@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    private int level = 2;
+    private int level = 1;
     private float maxHealth = 100;
     private float health = 100;
     private Image hpBar;

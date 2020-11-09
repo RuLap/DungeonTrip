@@ -5,14 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class MenuWork : MonoBehaviour
 {
+    private SaveSystem saveSystem;
+    private void Start()
+    {
+        saveSystem = new SaveSystem();
+    }
     public void ContinuePressed()
     {
-        SceneManager.LoadScene("TestScene4");
+        saveSystem.LoadGame();
+        //SceneManager.LoadScene("TestScene4");
     }
 
     public void NewGamePressed()
     {
-        SceneManager.LoadScene("TestScene5");
+        saveSystem.NewGame();
+        //SceneManager.LoadScene("TestScene5");
     }
 
     public void ExitPressed()

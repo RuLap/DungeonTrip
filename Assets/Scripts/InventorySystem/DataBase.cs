@@ -13,7 +13,7 @@ public class DataBase : MonoBehaviour
 
     public List<WeaponItem> Swords { get; } = new List<WeaponItem>();
     public List<ArmorItem> Armors { get; } = new List<ArmorItem>();
-    public List<PotionItem> Potions { get; } = new List<PotionItem>(6);
+    public List<PotionItem> Potions { get; } = new List<PotionItem>();
 
     private void Awake()
     {

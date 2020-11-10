@@ -10,6 +10,7 @@ public class PlayerStats
     public float mana;
     public float maxHealth;
     public float maxMana;
+    public int money;
 
     public static PlayerStats LoadFromJson()
     {

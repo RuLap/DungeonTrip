@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     private Text manaText;
     [SerializeField]
     private Text nameText;
+    [SerializeField]
+    private Text money;
     private Text xpText;
 
     [SerializeField]
@@ -24,6 +26,7 @@ public class Player : MonoBehaviour
     private Image manaBar;
     [SerializeField]
     private Image xpBar;
+    [SerializeField]
 
     public float Health { get { return playerStats.health; } }
     public float Mana { get { return playerStats.mana; } }
@@ -47,6 +50,7 @@ public class Player : MonoBehaviour
         manaText = manaBar.GetComponentInChildren<Text>();
         manaBar = manaBar.GetComponent<Image>();
         nameText.text = playerStats.name;
+        money.text = playerStats.money.ToString();
         inventory = GetComponent<Inventory>();
         audio = GetComponentInChildren<AttackAudio>();
     }

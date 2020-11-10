@@ -47,10 +47,6 @@ public class Inventory : MonoBehaviour
         {
             OpenCloseInventory();
         }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            inventorySaveInfo.SaveToJson();
-        }
     }
 
     /// <summary>

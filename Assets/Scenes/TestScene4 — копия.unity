@@ -363,6 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noDamage: {fileID: 8300000, guid: 09913f6ba8deec04e9cee2db10b75e4a, type: 3}
+  damage: {fileID: 0}
 --- !u!82 &234967830
 AudioSource:
   m_ObjectHideFlags: 0
@@ -27109,6 +27110,7 @@ MonoBehaviour:
   unequipSword: {fileID: 8300000, guid: 8d7325612dd56104d8e93de01de38b58, type: 3}
   dropArmor: {fileID: 8300000, guid: af28ab1bc73af424ea9cb49064f36ee1, type: 3}
   dropSword: {fileID: 8300000, guid: 4feeae8a2a2684a41b8e376eb06358e0, type: 3}
+  exitButton: {fileID: 0}
 --- !u!1 &1012006568
 GameObject:
   m_ObjectHideFlags: 0
@@ -32234,7 +32236,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 2018836777}
-  dbHolder: {fileID: 519420028}
 --- !u!114 &1180115899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32259,6 +32260,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e45078770c9a9c41a17efdf67ee80f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameText: {fileID: 0}
+  hpBar: {fileID: 0}
+  manaBar: {fileID: 0}
+  xpBar: {fileID: 0}
 --- !u!114 &1180115901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41473,6 +41478,5 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3662130004308488751, guid: 98f586cfb26c04147a84a2b0620cbd1f, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98f586cfb26c04147a84a2b0620cbd1f, type: 3}

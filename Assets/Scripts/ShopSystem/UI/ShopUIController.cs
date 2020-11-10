@@ -272,19 +272,22 @@ public class ShopUIController : MonoBehaviour
         switch(index)
         {
             case 0:
-                inv.AddItem(shop.db.Potions[i]);
-                Money -= productPrice;
-                money.text = Money.ToString();
+                if(inv.AddItem(shop.db.Potions[i])){
+                    Money -= productPrice;
+                    money.text = Money.ToString();
+                }
                 break;
             case 1:
-                inv.AddItem(shop.db.Armors[i-6]);
-                Money -= productPrice;
-                money.text = Money.ToString();
+                if(inv.AddItem(shop.db.Armors[i-6])){
+                    Money -= productPrice;
+                    money.text = Money.ToString();
+                }
                 break;
             case 2:
-                inv.AddItem(shop.db.Swords[i-12]);
-                Money -= productPrice;
-                money.text = Money.ToString();
+                if(inv.AddItem(shop.db.Swords[i-12])){
+                    Money -= productPrice;
+                    money.text = Money.ToString();
+                }
                 break;
         }
     }

@@ -17,7 +17,7 @@ public class PotionItem : Item
     public int RefillValue { get { return refillValue; } }
     public RefillType RefillType { get; set; }
 
-    public PotionItem(int _id, Sprite _sprite, string _title, int _refillValue, int _count, int _price) : base(_id, _sprite, _title, _price)
+    public PotionItem(int _id, Sprite _sprite, string _title, int _refillValue, int _price,int _count) : base(_id, _sprite, _title, _price)
     {
         maxCount = 99;
         count = _count;

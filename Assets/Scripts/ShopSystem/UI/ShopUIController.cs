@@ -8,7 +8,6 @@ public class ShopUIController : MonoBehaviour
     [SerializeField]
     private GameObject player;
     private Shop shop;
-    private Inventory inv;
 
     private int Money = 100;
     private int index = 0;
@@ -41,20 +40,18 @@ public class ShopUIController : MonoBehaviour
     //стоимость товара
     [SerializeField]
     private Text price;
+    private int priceProduct;
 
     //количество монет у игрока
     [SerializeField]
     private Text money;
-
-    int productPrice = 40;
+    private int moneyPlayer;
 
     void Start()
     {
         //определили магазин
         shop = player.GetComponent<Shop>();
-
-        inv = player.GetComponent<Inventory>();
-
+        
         //создали ячейки
         cells = new List<Image>();
         foreach (Image image in GetComponentsInChildren<Image>())
@@ -69,8 +66,10 @@ public class ShopUIController : MonoBehaviour
         Armor.SetActive(false);
         Swords.SetActive(false);
         BuyButton.interactable = false;
-        Time.timeScale = 0f;
+        //отключили магазин
+        gameObject.SetActive(false);
     }
+
     /// <summary>
     /// Сбрасывает элементы UI к виду, где нет активных кнопок
     /// и выбранных предметов в магазине
@@ -78,6 +77,7 @@ public class ShopUIController : MonoBehaviour
     public void OnShopOpen()
     {
         UIReset();
+        SetMoney();
         gameObject.SetActive(true);
     }
 
@@ -198,8 +198,7 @@ public class ShopUIController : MonoBehaviour
         UIReset();
         OnItemFocus(obj);
         ButtonClicked(obj);
-        if(Money>=productPrice)
-            BuyButton.interactable = true;
+        IsPriceMoreMoney();
     }
 
     /// <summary>
@@ -233,26 +232,18 @@ public class ShopUIController : MonoBehaviour
         selected = obj;
         var i = GetSelectionIndex();
         string color = "<color=\"#ff5500\">";
-        switch(index){
-            case 0: 
-                productPrice = shop.db.Potions[i].price; 
-                price.text = shop.db.Potions[i].price.ToString();
-                description.text = $"{color}{shop.db.Potions[i].Title}</color>\n{shop.db.Potions[i].Description}";
-                break;
-            case 1:
-                productPrice = shop.db.Armors[i-6].price;
-                price.text = shop.db.Armors[i-6].price.ToString();
-                description.text = $"{color}{shop.db.Armors[i-6].Title}</color>\n{shop.db.Armors[i-6].Description}\n";
-                description.text += $"{color}Уровень:</color> {shop.db.Armors[i-6].level}\n";
-                description.text += $"{color}Защита:</color> {shop.db.Armors[i-6].protection}\n";
-                break;
-            case 2:
-                productPrice = shop.db.Swords[i-12].price;
-                price.text = shop.db.Swords[i-12].price.ToString();
-                description.text = $"{color}{shop.db.Swords[i-12].Title}</color>\n{shop.db.Swords[i-12].Description}\n";
-                description.text += $"{color}Уровень:</color> {shop.db.Swords[i-12].level}\n";
-                description.text += $"{color}Урон:</color> {shop.db.Swords[i-12].damage}\n";
-                break;
+        priceProduct = shop.Items[i].price; 
+        price.text = shop.Items[i].price.ToString();
+        description.text = $"{color}{shop.Items[i].Title}</color>\n{shop.Items[i].Description}\n";
+        if(index == 1)
+        {
+            description.text += $"{color}Уровень:</color> {(shop.Items[i] as ArmorItem).level}\n";
+            description.text += $"{color}Защита:</color> {(shop.Items[i] as ArmorItem).protection}\n";
+        }
+        else if(index == 2)
+        {
+            description.text += $"{color}Уровень:</color> {(shop.Items[i] as WeaponItem).level}\n";
+            description.text += $"{color}Урон:</color> {(shop.Items[i] as WeaponItem).damage}\n";
         }
     }
     /// <summary>
@@ -269,26 +260,27 @@ public class ShopUIController : MonoBehaviour
     public void ToBuy()
     {
         var i = GetSelectionIndex();
-        switch(index)
-        {
-            case 0:
-                if(inv.AddItem(shop.db.Potions[i])){
-                    Money -= productPrice;
-                    money.text = Money.ToString();
-                }
-                break;
-            case 1:
-                if(inv.AddItem(shop.db.Armors[i-6])){
-                    Money -= productPrice;
-                    money.text = Money.ToString();
-                }
-                break;
-            case 2:
-                if(inv.AddItem(shop.db.Swords[i-12])){
-                    Money -= productPrice;
-                    money.text = Money.ToString();
-                }
-                break;
-        }
+        shop.BuyProduct(shop.Items[i]);
+        SetMoney();
+        IsPriceMoreMoney();
+    }
+
+    /// <summary>
+    /// Установить/обновить количество денег 
+    /// </summary>
+    public void SetMoney()
+    {
+        moneyPlayer = player.GetComponent<Player>().PlayerStats.money;
+        money.text = moneyPlayer.ToString();
+    }
+
+    /// <summary>
+    /// Установить/обновить количество денег 
+    /// </summary>
+    public void IsPriceMoreMoney()
+    {
+        if(moneyPlayer>=priceProduct)
+            BuyButton.interactable = true;
+        else BuyButton.interactable = false;
     }
 }

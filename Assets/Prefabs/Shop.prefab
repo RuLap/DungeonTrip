@@ -5335,10 +5335,10 @@ MonoBehaviour:
   Swords: {fileID: 2664287307193394205}
   Armor: {fileID: 7867263388742671279}
   Potions: {fileID: 7867263388990330839}
-  BuyButton: {fileID: 0}
+  BuyButton: {fileID: 1359425817701538642}
   description: {fileID: 75886850707367305}
   price: {fileID: 1349669216872411245}
-  money: {fileID: 0}
+  money: {fileID: 3824821274802826190}
 --- !u!1 &8014167872086370570
 GameObject:
   m_ObjectHideFlags: 0

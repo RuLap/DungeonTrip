@@ -10,20 +10,40 @@ using System.Linq;
 /// </summary>
 public class Shop : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject player;
     public GameObject shop;
-    private bool isShopOpened = true;
+    private bool isShopOpened = false;
 
-    public DataBase db;
+    private DataBase db;
     [SerializeField]
     private GameObject dbHolder;
+
+    const int size = 18;
+
+    [SerializeField]
+    protected List<Item> items = new List<Item>(size);
+    public List<Item> Items { get { return items; } }
 
     void Start()
     {
         db = dbHolder.GetComponent<DataBase>();
+        for(int i = 0; i < 6; i++)
+        {
+            items.Add(db.Potions[i]);
+        }
+        for(int i = 6; i < 12; i++)
+        {
+            items.Add(db.Armors[i-6]);
+        }
+        for(int i = 12; i < 18; i++)
+        {
+            items.Add(db.Swords[i-12]);
+        }
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Y))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             OpenCloseShop();
         }
@@ -71,5 +91,16 @@ public class Shop : MonoBehaviour
     public void ShopIsClosed()
     {
         isShopOpened = false;
+    }
+    
+    /// <summary>
+    /// Метод вызывается при покупке предмета
+    /// </summary>
+    public void BuyProduct(Item item)
+    {
+        if(GameObject.FindObjectOfType<Inventory>().AddItem(item))
+        {
+            GameObject.FindObjectOfType<Player>().PlayerStats.money -= item.price;
+        }
     }
 }

@@ -23,7 +23,7 @@ public class SpriteSwapDemo : MonoBehaviour
     private void Start()
     {
         // Get and cache the sprite renderer for this game object
-        this.spriteRenderer = GameObject.Find("Player").GetComponentInChildren<SpriteRenderer>();
+        this.spriteRenderer = GameObject.Find("Body").GetComponentInChildren<SpriteRenderer>();
         selectedSkins = maleSkins;
         LoadSpriteSheet();
     }

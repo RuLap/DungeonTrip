@@ -9,7 +9,6 @@ public class ShopUIController : MonoBehaviour
     private GameObject player;
     private Shop shop;
 
-    private int Money = 100;
     private int index = 0;
 
     //панели с товарами
@@ -61,7 +60,6 @@ public class ShopUIController : MonoBehaviour
                 cells.Add(image);
             }
         }
-        money.text = Money.ToString();
         Potions.SetActive(true);
         Armor.SetActive(false);
         Swords.SetActive(false);

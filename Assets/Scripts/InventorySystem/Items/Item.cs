@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.IO;
 
-public class Item
+public abstract class Item
 {
     public int id;
     public string title;

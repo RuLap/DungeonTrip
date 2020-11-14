@@ -4,6 +4,5 @@ using UnityEngine;
 
 public abstract class EquipmentItem : Item
 {
-    protected int quality;
     public int level;
 }

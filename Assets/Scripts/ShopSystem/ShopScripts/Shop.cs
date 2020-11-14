@@ -16,7 +16,6 @@ public class Shop : MonoBehaviour
     private bool isShopOpened = false;
 
     private DataBase db;
-    [SerializeField]
     private GameObject dbHolder;
 
     const int size = 18;
@@ -27,6 +26,7 @@ public class Shop : MonoBehaviour
 
     void Start()
     {
+        dbHolder = Camera.main.gameObject;
         db = dbHolder.GetComponent<DataBase>();
         for(int i = 0; i < 6; i++)
         {

@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        money.text = playerStats.money.ToString();
         if (Input.GetMouseButtonDown(0))
         {
             if (!GameController.IsPaused)

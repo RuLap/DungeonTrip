@@ -99,6 +99,15 @@ public class Player : MonoBehaviour
     }
 
     /// <summary>
+    /// Добавляет игроку деньги
+    /// </summary>
+    /// <param name="count">Количество денег</param>
+    public void AddMoney(int count)
+    {
+        playerStats.money += count;
+    }
+
+    /// <summary>
     /// Поиск противников в радиусе 1 юнита и отнятие у них здоровья в случае успеха
     /// </summary>
     private void Attack()

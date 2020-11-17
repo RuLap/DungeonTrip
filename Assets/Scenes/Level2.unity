@@ -83589,6 +83589,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnInventoryClose
       objectReference: {fileID: 0}
+    - target: {fileID: 4036254248240304129, guid: 020f3d45b4b39c347b88e4f83501ec10,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1338909268}
+    - target: {fileID: 4036254248240304129, guid: 020f3d45b4b39c347b88e4f83501ec10,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseInfoPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 4036254249460850025, guid: 020f3d45b4b39c347b88e4f83501ec10,
         type: 3}
       propertyPath: audioHolder
@@ -111120,6 +111130,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3de741a8e0a177343916cf982d7a79dc, type: 3}
+--- !u!114 &1338909268 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1687957887734138472, guid: 3de741a8e0a177343916cf982d7a79dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1338909267}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe3cd4aa60a8a540bd8540a58d178ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1683628223 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6752036033019972968, guid: 020f3d45b4b39c347b88e4f83501ec10,

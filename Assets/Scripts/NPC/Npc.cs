@@ -24,7 +24,6 @@ public class Npc : MonoBehaviour
     /// </summary>
     public void TellInfo()
     {
-        
         if (infoPanel.gameObject.activeInHierarchy)
         {
             return;

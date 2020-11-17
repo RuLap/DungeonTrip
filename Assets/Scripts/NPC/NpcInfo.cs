@@ -17,6 +17,8 @@ public class NpcInfo
     {
         var jsonPath = Application.dataPath + "/StreamingAssets/" + json + ".json";
         var jsonString = File.ReadAllText(jsonPath);
+        if (jsonString.Contains("[Имя героя]"))
+            jsonString = jsonString.Replace("[Имя героя]", PlayerStats.LoadFromJson().name);
         return JsonUtility.FromJson<NpcInfo>(jsonString);
     }
 }

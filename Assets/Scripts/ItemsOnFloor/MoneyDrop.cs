@@ -12,6 +12,7 @@ public class MoneyDrop : Drop
         {
             count = Random.Range(player.PlayerXP.currentLevel * 5, player.PlayerXP.currentLevel * 10);
             player.AddMoney(count);
+            Destroy(gameObject);
         }
     }
 }

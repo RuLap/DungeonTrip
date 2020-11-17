@@ -18,7 +18,10 @@ public class Player : MonoBehaviour
     private Text nameText;
     [SerializeField]
     private Text money;
+    [SerializeField]
+    private Text plusMoney;
     private Text xpText;
+
 
     [SerializeField]
     private Image hpBar;
@@ -105,6 +108,20 @@ public class Player : MonoBehaviour
     public void AddMoney(int count)
     {
         playerStats.money += count;
+        plusMoney.text = "+" + count.ToString();
+        StartCoroutine(ShowAddedMoney());
+    }
+
+    private IEnumerator ShowAddedMoney()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        var color = plusMoney.color;
+        while(plusMoney.color.a > 0)
+        {
+            plusMoney.color = new Color(color.r, color.g, color.b, plusMoney.color.a - 0.05f);
+            yield return new WaitForSecondsRealtime(0.0025f);
+        }
+        plusMoney.text = string.Empty;
     }
 
     /// <summary>

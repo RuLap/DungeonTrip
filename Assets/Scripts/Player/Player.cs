@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private AttackAudio audio;
     private PlayerXP playerXP;
     private PlayerStats playerStats;
+    private IEnumerator plusMoneyCoroutine;
 
     private Text healthText;
     private Text manaText;
@@ -56,6 +57,7 @@ public class Player : MonoBehaviour
         money.text = playerStats.money.ToString();
         inventory = GetComponent<Inventory>();
         audio = GetComponentInChildren<AttackAudio>();
+        plusMoneyCoroutine = ShowAddedMoney();
     }
 
     void Update()
@@ -107,15 +109,22 @@ public class Player : MonoBehaviour
     /// <param name="count">Количество денег</param>
     public void AddMoney(int count)
     {
+        StopCoroutine(plusMoneyCoroutine);
+        plusMoneyCoroutine = ShowAddedMoney();
         playerStats.money += count;
         plusMoney.text = "+" + count.ToString();
-        StartCoroutine(ShowAddedMoney());
+        StartCoroutine(plusMoneyCoroutine);
     }
 
+    /// <summary>
+    /// Отображение добавленного количества монет
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator ShowAddedMoney()
     {
-        yield return new WaitForSecondsRealtime(1);
         var color = plusMoney.color;
+        plusMoney.color = new Color(color.r, color.g, color.b, 1);
+        yield return new WaitForSecondsRealtime(1);
         while(plusMoney.color.a > 0)
         {
             plusMoney.color = new Color(color.r, color.g, color.b, plusMoney.color.a - 0.05f);

@@ -43,19 +43,22 @@ public class UpDownTrap : MonoBehaviour
             {
                 state = TrapState.middle;
                 _collider.enabled = false;
-                light.enabled = false;
+                if(light != null)
+                    light.enabled = false;
             }
             else if (state == TrapState.middle)
             {
                 state = TrapState.up;
                 _collider.enabled = true;
-                light.enabled = true;
+                if (light != null)
+                    light.enabled = true;
             }
             else
             {
                 state = TrapState.down;
                 _collider.enabled = false;
-                light.enabled = false;
+                if (light != null)
+                    light.enabled = false;
             }
             sr.sprite = sprites[(int)state];
             yield return new WaitForSecondsRealtime(1f);

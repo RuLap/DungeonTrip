@@ -77,6 +77,10 @@ public class Player : MonoBehaviour
         {
             playerXP.SaveToJson();
         }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            ShopOpen();
+        }
     }
 
     /// <summary>
@@ -155,5 +159,24 @@ public class Player : MonoBehaviour
         if (playerStats.mana < 0) playerStats.mana = 0;
         manaBar.fillAmount = playerStats.mana / playerStats.maxMana;
         manaText.text = playerStats.mana.ToString();
+    }
+
+    /// <summary>
+    /// Поиск магазина в радиусе 1 юнита и его открытие в случае успеха
+    /// </summary>
+    private void ShopOpen()
+    {
+        var colliders = Physics2D.OverlapCircleAll(transform.position, 1);
+        if (colliders.Length > 0)
+        {
+            foreach (var collider in colliders)
+            {
+                if (collider.TryGetComponent<Shop>(out Shop table))
+                {
+                    table.OpenCloseShop();
+                    return;
+                }
+            }
+        }
     }
 }

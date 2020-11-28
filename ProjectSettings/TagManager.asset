@@ -12,6 +12,7 @@ TagManager:
   - DropInfo
   - UIAudio
   - EffectsAudio
+  - TXVillagePropsStallTable
   layers:
   - Default
   - TransparentFX

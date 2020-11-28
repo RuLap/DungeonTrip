@@ -11,7 +11,7 @@ using System.Linq;
 public class Shop : MonoBehaviour
 {
     [SerializeField]
-    private GameObject player;
+    private GameObject TXVillagePropsStallTable;
     public GameObject shop;
     private bool isShopOpened = false;
 
@@ -41,19 +41,12 @@ public class Shop : MonoBehaviour
             items.Add(db.Swords[i-12]);
         }
     }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            OpenCloseShop();
-        }
-    }
 
     /// <summary>
     /// Открывает магазин, если он закрыт
     /// и закрывает, если открыт
     /// </summary>
-    private void OpenCloseShop()
+    public void OpenCloseShop()
     {
         if (isShopOpened)
         {

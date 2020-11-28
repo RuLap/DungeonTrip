@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ShopUIController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject player;
+    //private GameObject TXVillagePropsStallTable;
     private Shop shop;
 
     private int index = 0;
@@ -49,7 +49,7 @@ public class ShopUIController : MonoBehaviour
     void Start()
     {
         //определили магазин
-        shop = player.GetComponent<Shop>();
+        shop = GameObject.FindObjectOfType<Shop>();
         
         //создали ячейки
         cells = new List<Image>();
@@ -268,12 +268,12 @@ public class ShopUIController : MonoBehaviour
     /// </summary>
     public void SetMoney()
     {
-        moneyPlayer = player.GetComponent<Player>().PlayerStats.money;
+        moneyPlayer = GameObject.FindObjectOfType<Player>().PlayerStats.money;
         money.text = moneyPlayer.ToString();
     }
 
     /// <summary>
-    /// Установить/обновить количество денег 
+    /// Проверка, что денег у игрока не меньше стоимости товара
     /// </summary>
     public void IsPriceMoreMoney()
     {

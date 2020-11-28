@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Pathfinding;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,9 +17,18 @@ public class Enemy : MonoBehaviour
     private Image hpBar;
     private Text hpBarText;
     private BackMusicScript backMusic;
+    private Vector3 startPos;
+    private AIDestinationSetter destinationSetter;
+    private GameObject player;
+    private GameObject temp;
 
     private void Start()
     {
+        player = GameObject.Find("Player");
+        destinationSetter = gameObject.GetComponent<AIDestinationSetter>();
+        startPos = gameObject.transform.position;
+        temp=new GameObject();
+        temp.transform.position = startPos;
         maxHealth = health;
         hpBar = GetComponentInChildren<Image>();
         hpBar.fillAmount = health / maxHealth;
@@ -47,12 +57,14 @@ public class Enemy : MonoBehaviour
                 backMusic = Camera.main.GetComponentInChildren<BackMusicScript>();
                 backMusic.AddToList(gameObject);
                 backMusic.PlayBattleMusic(battleMusic.enemyMusic);
+                destinationSetter.target = player.transform;
             }
             else
             {
                 backMusic = Camera.main.GetComponentInChildren<BackMusicScript>();
                 backMusic.RemoveFromList(gameObject);
                 backMusic.PlayCalmMusic();
+                destinationSetter.target = temp.transform;
             }
             yield return new WaitForSeconds(1f);
         }

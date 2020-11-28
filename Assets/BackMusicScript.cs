@@ -33,7 +33,7 @@ public class BackMusicScript : MonoBehaviour
     {
         if (!battleMusicIsPlaying)
         {
-            audioSource.Stop();
+            //audioSource.Stop();
             audioSource.PlayOneShot(audioClip);
             battleMusicIsPlaying = true;
             calmMusicIsPlaying = false;

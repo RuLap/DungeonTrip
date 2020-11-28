@@ -376,7 +376,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a0ce4316ec2064a9534c458a075c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  battleMusic: {fileID: 11400000, guid: 57f84f78d4eb2ac4eb44965d9e960d5b, type: 2}
   health: 10
+  seekRadius: 5
+  enemyDamage: 5
 --- !u!1 &3600578115297818581
 GameObject:
   m_ObjectHideFlags: 0

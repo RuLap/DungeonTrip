@@ -37095,7 +37095,7 @@ PrefabInstance:
     - target: {fileID: 1687957887734138472, guid: 3de741a8e0a177343916cf982d7a79dc,
         type: 3}
       propertyPath: jsonString
-      value: npc5-1
+      value: npc4-1
       objectReference: {fileID: 0}
     - target: {fileID: 1687957887734138472, guid: 3de741a8e0a177343916cf982d7a79dc,
         type: 3}
@@ -38142,7 +38142,7 @@ PrefabInstance:
     - target: {fileID: 1687957887734138472, guid: 3de741a8e0a177343916cf982d7a79dc,
         type: 3}
       propertyPath: jsonString
-      value: npc5-2
+      value: npc4-2
       objectReference: {fileID: 0}
     - target: {fileID: 1687957887734138472, guid: 3de741a8e0a177343916cf982d7a79dc,
         type: 3}

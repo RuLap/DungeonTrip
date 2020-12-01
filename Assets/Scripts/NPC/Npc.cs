@@ -28,6 +28,7 @@ public class Npc : MonoBehaviour
         {
             return;
         }
+        messageUI.text = string.Empty;
         messageUI.text = $"<color=\"#ff5500\">{info.name}:</color> ";
         infoPanel.SetActive(true);
         StartCoroutine("WriteMessage");

@@ -13,11 +13,18 @@ public class Chest : MonoBehaviour
     [SerializeField]
     private Sprite openedChest;
 
+    /// <summary>
+    /// Открытие сундука
+    /// </summary>
     public void Open()
     {
         StartCoroutine("Drop");
     }
 
+    /// <summary>
+    /// Анимация вылета вещей
+    /// </summary>
+    /// <returns></returns>
     IEnumerator Drop()
     {
         var dx = 0.1f;

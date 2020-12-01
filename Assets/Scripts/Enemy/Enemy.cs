@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     private float maxHealth = 100;
     private float health = 100;
     private Image hpBar;
+    [SerializeField]
+    private GameObject moneyDrop;
 
     private void Start()
     {
@@ -26,6 +28,8 @@ public class Enemy : MonoBehaviour
             int xp;
             xp = player.PlayerXP.maxPoints / 10 - ((player.PlayerXP.currentLevel - level) * 20);
             player.AddXP(xp);
+            Instantiate(moneyDrop).transform.position = transform.position;
+            Destroy(gameObject);
         }
     }
 }

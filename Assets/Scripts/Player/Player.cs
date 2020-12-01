@@ -173,6 +173,10 @@ public class Player : MonoBehaviour
                     npc.TellInfo();
                     return;
                 }
+                else if(collider.TryGetComponent<Chest>(out Chest chest))
+                {
+                    chest.Open();
+                }
             }
         }
     }

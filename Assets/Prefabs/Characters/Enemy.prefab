@@ -245,7 +245,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7961806002609506517, guid: 61dcb377c1dcc164cb394e622ccdeed9,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -270,6 +270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a0ce4316ec2064a9534c458a075c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyDrop: {fileID: 8541640333844889902, guid: 8a03600bd62398c41a708d599a2c823b,
+    type: 3}
 --- !u!58 &8490385901281846396
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -7,10 +7,12 @@ TagManager:
   - InventoryCell
   - Enemie
   - NPC
+  - ShopCell
   - Drop
   - DropInfo
   - UIAudio
   - EffectsAudio
+  - TXVillagePropsStallTable
   layers:
   - Default
   - TransparentFX

@@ -3,7 +3,16 @@ guid: afcf2f992c600f54db55053071b739c5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - healPotionUse: {fileID: 8300000, guid: 8aee4bb403651e64f93f2fa1c277ed83, type: 3}
+  - manaPotionUse: {fileID: 8300000, guid: 1903fb7faac444f46a37c648fd509f2e, type: 3}
+  - equipArmor: {fileID: 8300000, guid: 2b262d01deedd244c9bdbca2a8effcdf, type: 3}
+  - unequipArmor: {fileID: 8300000, guid: 770559d7e74caf340babea88603f8540, type: 3}
+  - equipSword: {fileID: 8300000, guid: 095904b4a3a16324cb1575b1bcf21692, type: 3}
+  - unequipSword: {fileID: 8300000, guid: 8d7325612dd56104d8e93de01de38b58, type: 3}
+  - dropArmor: {fileID: 8300000, guid: af28ab1bc73af424ea9cb49064f36ee1, type: 3}
+  - dropSword: {fileID: 8300000, guid: 4feeae8a2a2684a41b8e376eb06358e0, type: 3}
+  - exitButton: {fileID: 8300000, guid: f4da6e944eef38b42bebf16bcee74b17, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

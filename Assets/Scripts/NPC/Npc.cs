@@ -24,11 +24,11 @@ public class Npc : MonoBehaviour
     /// </summary>
     public void TellInfo()
     {
-        
         if (infoPanel.gameObject.activeInHierarchy)
         {
             return;
         }
+        messageUI.text = string.Empty;
         messageUI.text = $"<color=\"#ff5500\">{info.name}:</color> ";
         infoPanel.SetActive(true);
         StartCoroutine("WriteMessage");

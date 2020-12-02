@@ -84,6 +84,7 @@ public class InventoryUIController : MonoBehaviour
         Time.timeScale = 1f;
         gameObject.SetActive(false);
         inventory.InventoryIsClosed();
+        audio.PlayExitButton();
     }
 
 

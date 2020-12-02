@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using Pathfinding;
+using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class PlayerAttackAnimation : MonoBehaviour
@@ -17,7 +19,7 @@ public class PlayerAttackAnimation : MonoBehaviour
         playerAnim = player.GetComponent<Animator>();
         animator = GetComponent<Animator>();
     }
-
+    
     public void PlayAttackAnimation()
     {
         audio.PLayNoDamage();
@@ -37,6 +39,13 @@ public class PlayerAttackAnimation : MonoBehaviour
         else if (curState.IsName("RightMove") || curState.IsName("RightIdle"))
         {
             animator.SetTrigger("RightAttack");
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<Seeker>() != null)
+        {
+            Destroy(other.gameObject);
         }
     }
 }

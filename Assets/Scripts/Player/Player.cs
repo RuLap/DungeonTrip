@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private PlayerXP playerXP;
     private PlayerStats playerStats;
     private IEnumerator plusMoneyCoroutine;
+  
 
     private Text healthText;
     private Text manaText;
@@ -153,6 +154,11 @@ public class Player : MonoBehaviour
                 {
                     //вызов получения урона у противников
                     enemy.ApplyDamage((inventory.Items[12] as WeaponItem).damage);
+                    audio.PlayDamage();
+                }
+                if(collider.TryGetComponent<BossEnemy>(out BossEnemy bossenemy))
+                {
+                    bossenemy.ApplyDamage((inventory.Items[12] as WeaponItem).damage);
                     audio.PlayDamage();
                 }
             }

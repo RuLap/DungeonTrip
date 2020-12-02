@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     public PlayerXP PlayerXP { get { return playerXP; } }
 
     public PlayerStats PlayerStats { get { return playerStats; } }
+    public Inventory Inventory { get { return inventory; } }
 
     void Start()
     {

@@ -11,7 +11,7 @@ public class BackMusicScript : MonoBehaviour
     private bool battleMusicIsPlaying = false;
     private bool calmMusicIsPlaying = true;
     public List<GameObject> enemies = new List<GameObject>();
-    private void Start()
+    private void Awake()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
     }
@@ -33,7 +33,7 @@ public class BackMusicScript : MonoBehaviour
     {
         if (!battleMusicIsPlaying)
         {
-            //audioSource.Stop();
+            audioSource.Stop();
             audioSource.PlayOneShot(audioClip);
             battleMusicIsPlaying = true;
             calmMusicIsPlaying = false;

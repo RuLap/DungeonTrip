@@ -58,7 +58,8 @@ public class PlayerXP
     /// <returns></returns>
     public float GetFillAmount()
     {
-        if (points == 0) return 0;
+        if (points <= 0) return 0;
+        if (points > maxPoints) return maxPoints;
         return (float)points / maxPoints;
     }
 }

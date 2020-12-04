@@ -162,5 +162,24 @@ namespace Tests
             items[13] = db.Armors[0];
             Assert.IsFalse(player.Inventory.HasEmptyArmorSlot());
         }
+
+        [Test]
+        public void InventorySaveInfoLoadTest()
+        {
+            InventorySaveInfo info = InventorySaveInfo.LoadFromJson();
+            Assert.IsNotNull(info);
+        }
+
+        [Test]
+        public void StoryDataLoadTest()
+        {
+            StoryData data = StoryData.CreateFromJSON("Intro");
+            Assert.IsNotNull(data);
+            Assert.IsTrue(data.story.Contains("Давным"));
+
+            StoryData data1 = StoryData.CreateFromJSON("Ending");
+            Assert.IsNotNull(data1);
+            Assert.IsTrue(data1.story.Contains("Поздравляю"));
+        }
     }
 }

@@ -11,9 +11,10 @@ using System.Linq;
 public class Shop : MonoBehaviour
 {
     [SerializeField]
-    private GameObject TXVillagePropsStallTable;
+    public GameObject TXVillagePropsStallTable; 
     public GameObject shop;
     private bool isShopOpened = false;
+    public bool IsShopOpened { get { return isShopOpened; } }
 
     private DataBase db;
     private GameObject dbHolder;
@@ -72,7 +73,7 @@ public class Shop : MonoBehaviour
     /// <summary>
     /// Закрывает магазин
     /// </summary>
-    public void CloseShop()
+    private void CloseShop()
     {
         shop.GetComponent<ShopUIController>().OnShopClose();
         isShopOpened = false;

@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class ShopUIController : MonoBehaviour
 {
-    [SerializeField]
-    //private GameObject TXVillagePropsStallTable;
     private Shop shop;
 
     private int index = 0;
@@ -105,7 +103,7 @@ public class ShopUIController : MonoBehaviour
     /// <summary>
     /// Изменить видимую панель на одну вправо
     /// </summary>
-    public void OnCickRight()
+    private void OnCickRight()
     {
         switch (index)
         {
@@ -130,7 +128,7 @@ public class ShopUIController : MonoBehaviour
     /// <summary>
     /// Изменить видимую панель на одну влево
     /// </summary>
-    public void OnCickLeft()
+    private void OnCickLeft()
     {
         switch (index)
         {
@@ -155,7 +153,7 @@ public class ShopUIController : MonoBehaviour
     /// <summary>
     /// Открыть панель с броней
     /// </summary>
-    public void OnClickArmor()
+    private void OnClickArmor()
     {
         Potions.SetActive(false);
         Swords.SetActive(false);
@@ -166,7 +164,7 @@ public class ShopUIController : MonoBehaviour
     /// <summary>
     /// Открыть панель с оружием
     /// </summary>
-    public void OnClickSwords()
+    private void OnClickSwords()
     {
         Potions.SetActive(false);
         Armor.SetActive(false);
@@ -178,7 +176,7 @@ public class ShopUIController : MonoBehaviour
     /// <summary>
     /// Открыть панель с зельями
     /// </summary>
-    public void OnClickPotions()
+    private void OnClickPotions()
     {
         Armor.SetActive(false);
         Swords.SetActive(false);
@@ -191,7 +189,7 @@ public class ShopUIController : MonoBehaviour
     /// Перекрашивает выбранную ячейку
     /// </summary>
     /// <param name="obj">Выбранная ячейка</param>
-    public void OnSelect(GameObject obj)
+    private void OnSelect(GameObject obj)
     {
         UIReset();
         OnItemFocus(obj);
@@ -255,7 +253,7 @@ public class ShopUIController : MonoBehaviour
     /// <summary>
     /// Покупка товара
     /// </summary>
-    public void ToBuy()
+    private void ToBuy()
     {
         var i = GetSelectionIndex();
         shop.BuyProduct(shop.Items[i]);
@@ -266,7 +264,7 @@ public class ShopUIController : MonoBehaviour
     /// <summary>
     /// Установить/обновить количество денег 
     /// </summary>
-    public void SetMoney()
+    private void SetMoney()
     {
         moneyPlayer = GameObject.FindObjectOfType<Player>().PlayerStats.money;
         money.text = moneyPlayer.ToString();
@@ -275,7 +273,7 @@ public class ShopUIController : MonoBehaviour
     /// <summary>
     /// Проверка, что денег у игрока не меньше стоимости товара
     /// </summary>
-    public void IsPriceMoreMoney()
+    private void IsPriceMoreMoney()
     {
         if(moneyPlayer>=priceProduct)
             BuyButton.interactable = true;

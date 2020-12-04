@@ -31,6 +31,7 @@ public class Inventory : MonoBehaviour
     private InventorySaveInfo inventorySaveInfo;
 
     public InventorySaveInfo InventorySaveInfo { get { return inventorySaveInfo; } }
+    public bool IsInventoryOpened { get { return isInventoryOpened; } }
 
     void Start()
     {
@@ -53,7 +54,7 @@ public class Inventory : MonoBehaviour
     /// Открывает инвентарь, если он закрыт
     /// и закрывает, если открыт
     /// </summary>
-    private void OpenCloseInventory()
+    public void OpenCloseInventory()
     {
         if (isInventoryOpened)
         {

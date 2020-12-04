@@ -121,6 +121,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &1480948232 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5760371798718375249, guid: d007ab0fd9a1abb4383c632889e2024b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6369227480681266618}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe3cd4aa60a8a540bd8540a58d178ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6369227480681266618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -492,6 +504,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6962425086403507577, guid: d007ab0fd9a1abb4383c632889e2024b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1480948232}
+    - target: {fileID: 6962425086403507577, guid: d007ab0fd9a1abb4383c632889e2024b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseInfoPanel
       objectReference: {fileID: 0}
     - target: {fileID: 8073721826069827452, guid: d007ab0fd9a1abb4383c632889e2024b,
         type: 3}

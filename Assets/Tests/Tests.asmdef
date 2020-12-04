@@ -3,7 +3,9 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "NewAssembly"
+        "GameAssembly",
+        "AstarPathfindingProject",
+        "AstarPathfindingProjectEditor"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -51,6 +51,7 @@ public class Npc : MonoBehaviour
     /// <returns></returns>
     IEnumerator WriteMessage()
     {
+        messageUI.text = $"<color=\"#ff5500\">{info.name}:</color> ";
         string msg = messageUI.text;
         for(int i = 0; i < info.message.Length; i++)
         {

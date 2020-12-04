@@ -25,6 +25,8 @@ public class InventoryAudio : MonoBehaviour
 
     private AudioSource source;
 
+    public AudioSource Source { get { return source; } }
+
     private void Start()
     {
         source = GetComponent<AudioSource>();    

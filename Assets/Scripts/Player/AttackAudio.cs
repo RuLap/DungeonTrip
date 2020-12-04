@@ -11,6 +11,8 @@ public class AttackAudio : MonoBehaviour
 
     private AudioSource source;
 
+    public AudioSource Source { get { return source; } }
+
     void Start()
     {
         source = GetComponent<AudioSource>();

@@ -404,6 +404,7 @@ MonoBehaviour:
   unequipSword: {fileID: 8300000, guid: 8d7325612dd56104d8e93de01de38b58, type: 3}
   dropArmor: {fileID: 8300000, guid: af28ab1bc73af424ea9cb49064f36ee1, type: 3}
   dropSword: {fileID: 8300000, guid: 4feeae8a2a2684a41b8e376eb06358e0, type: 3}
+  exitButton: {fileID: 8300000, guid: f4da6e944eef38b42bebf16bcee74b17, type: 3}
 --- !u!1 &9197759506965096782
 GameObject:
   m_ObjectHideFlags: 0

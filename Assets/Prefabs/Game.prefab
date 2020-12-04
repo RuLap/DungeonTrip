@@ -113049,6 +113049,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4036254248127942429, guid: 020f3d45b4b39c347b88e4f83501ec10,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4036254248209530532, guid: 020f3d45b4b39c347b88e4f83501ec10,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -113068,6 +113073,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CloseInfoPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4036254249078438545, guid: 020f3d45b4b39c347b88e4f83501ec10,
+        type: 3}
+      propertyPath: m_TagString
+      value: InfoPanel
       objectReference: {fileID: 0}
     - target: {fileID: 4036254249460850025, guid: 020f3d45b4b39c347b88e4f83501ec10,
         type: 3}

@@ -13,6 +13,7 @@ TagManager:
   - UIAudio
   - EffectsAudio
   - TXVillagePropsStallTable
+  - InfoPanel
   layers:
   - Default
   - TransparentFX

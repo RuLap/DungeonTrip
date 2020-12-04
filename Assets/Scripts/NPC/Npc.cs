@@ -13,6 +13,8 @@ public class Npc : MonoBehaviour
     private GameObject infoPanel;
     private Text messageUI;
 
+    public NpcInfo Info => info;
+
     void Start()
     {
         messageUI = infoPanel.GetComponentInChildren<Text>();

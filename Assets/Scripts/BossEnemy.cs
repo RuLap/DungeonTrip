@@ -10,6 +10,7 @@ public class BossEnemy : MonoBehaviour
 {
     private string[] levels = { "Level2", "Level3", "Level4", "Level5", "Level6", "Ending" };
     private string[] bossnames = {"Cyclop","Minotaur","Skelet","Slime","Hero","Mage"};
+    private GameObject entryPoint;
     public GameObject Portal;
     [SerializeField]
     private EnemyMusicSO battleMusic;
@@ -41,6 +42,7 @@ public class BossEnemy : MonoBehaviour
         temp = new GameObject();
         temp.transform.position = startPos;
         maxHealth = health;
+        entryPoint = GameObject.Find("EntryPoint");
         hpBar = GameObject.Find("BossHp").GetComponentInChildren<Image>();
         hpBar.fillAmount=health/maxHealth;
         hpBarText = GameObject.Find("BossHp").GetComponentInChildren<Text>();
@@ -73,6 +75,7 @@ public class BossEnemy : MonoBehaviour
             destinationSetter.target = transform;
             dead = true;
             SetPortalLevel();
+            entryPoint.SetActive(false);
             Destroy(hpBarText);
         }
     }

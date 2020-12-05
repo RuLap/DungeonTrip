@@ -44,6 +44,8 @@ public class ShopUIController : MonoBehaviour
     private Text money;
     private int moneyPlayer;
 
+    public int Index { get { return index; } }
+
     void Start()
     {
         //определили магазин
@@ -103,7 +105,7 @@ public class ShopUIController : MonoBehaviour
     /// <summary>
     /// Изменить видимую панель на одну вправо
     /// </summary>
-    private void OnCickRight()
+    public void OnCickRight()
     {
         switch (index)
         {
@@ -128,7 +130,7 @@ public class ShopUIController : MonoBehaviour
     /// <summary>
     /// Изменить видимую панель на одну влево
     /// </summary>
-    private void OnCickLeft()
+    public void OnCickLeft()
     {
         switch (index)
         {
@@ -153,7 +155,7 @@ public class ShopUIController : MonoBehaviour
     /// <summary>
     /// Открыть панель с броней
     /// </summary>
-    private void OnClickArmor()
+    public void OnClickArmor()
     {
         Potions.SetActive(false);
         Swords.SetActive(false);
@@ -164,7 +166,7 @@ public class ShopUIController : MonoBehaviour
     /// <summary>
     /// Открыть панель с оружием
     /// </summary>
-    private void OnClickSwords()
+    public void OnClickSwords()
     {
         Potions.SetActive(false);
         Armor.SetActive(false);
@@ -176,7 +178,7 @@ public class ShopUIController : MonoBehaviour
     /// <summary>
     /// Открыть панель с зельями
     /// </summary>
-    private void OnClickPotions()
+    public void OnClickPotions()
     {
         Armor.SetActive(false);
         Swords.SetActive(false);

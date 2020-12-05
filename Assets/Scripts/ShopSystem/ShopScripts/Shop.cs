@@ -73,7 +73,7 @@ public class Shop : MonoBehaviour
     /// <summary>
     /// Закрывает магазин
     /// </summary>
-    private void CloseShop()
+    public void CloseShop()
     {
         shop.GetComponent<ShopUIController>().OnShopClose();
         isShopOpened = false;

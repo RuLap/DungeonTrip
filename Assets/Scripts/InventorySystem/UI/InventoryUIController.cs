@@ -40,6 +40,12 @@ public class InventoryUIController : MonoBehaviour
     [SerializeField]
     private Text stats;
 
+    public Button UseButton { get { return useButton; } }
+    public Button DropButton { get { return dropButton; } }
+    public Button EquipButton { get { return equipButton; } }
+    public Button TakeOffButton { get { return takeOffButton; } }
+    public Inventory Inventory { get { return inventory; } }
+
     void Start()
     {
         audio = audioHolder.GetComponent<InventoryAudio>();

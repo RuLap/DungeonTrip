@@ -1,11 +1,16 @@
 ﻿using Pathfinding;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BossEnemy : MonoBehaviour
 {
+    private string[] levels = { "Level2", "Level3", "Level4", "Level5", "Level6", "Ending" };
+    private string[] bossnames = {"Cyclop","Minotaur","Skelet","Slime","Hero","Mage"};
+    public GameObject Portal;
     [SerializeField]
     private EnemyMusicSO battleMusic;
     private float maxHealth;
@@ -43,6 +48,15 @@ public class BossEnemy : MonoBehaviour
         StartCoroutine(CheckRadius());
         StartCoroutine(Attack());
     }
+    private void SetPortalLevel()
+    {
+        Portal.SetActive(true);
+        for(int i = 0; i < levels.Length; i++)
+        {
+            if (gameObject.name == bossnames[i])
+                Portal.GetComponent<Portal>().nextSceneName = levels[i];
+        }
+    }
     public void ApplyDamage(float damage)
     {
         if(!dead)
@@ -58,6 +72,7 @@ public class BossEnemy : MonoBehaviour
             animator.Play("Dead");
             destinationSetter.target = transform;
             dead = true;
+            SetPortalLevel();
             Destroy(hpBarText);
         }
     }
@@ -68,8 +83,15 @@ public class BossEnemy : MonoBehaviour
             if (hasAttacked == false&&attacking==false)
             {
                 Collider2D[] c2d = Physics2D.OverlapCircleAll(transform.position, seekRadius);
-                if (c2d[0].GetComponent<Player>() != null)
+                bool tempb = false;
+                foreach(Collider2D cl2d in c2d)
                 {
+                    if (cl2d.gameObject.GetComponent<Player>() != null)
+                        tempb = true;
+                }
+                if (tempb)
+                {
+                   
                     backMusic = Camera.main.GetComponentInChildren<BackMusicScript>();
                     backMusic.AddToList(gameObject);
                     backMusic.PlayBattleMusic(battleMusic.enemyMusic);

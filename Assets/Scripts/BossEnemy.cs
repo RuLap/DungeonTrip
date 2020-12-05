@@ -45,6 +45,7 @@ public class BossEnemy : MonoBehaviour
     }
     public void ApplyDamage(float damage)
     {
+        if(!dead)
         health -= damage;
         if(health>0)
         StartCoroutine(GetDamage());

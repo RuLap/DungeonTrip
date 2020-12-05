@@ -8,8 +8,8 @@ using System.Linq;
 
 public class MenuWork : MonoBehaviour
 {
-    public int quality = 2; //Качество
-    public bool isFullScreen = true; //Полноэкранный режим
+    public static int quality = 2; //Качество
+    public static bool isFullScreen = true; //Полноэкранный режим
     public AudioMixer AudioMixer; //Регулятор громкости
     public Dropdown resolutionDropdown; //Список с разрешениями для игры
     public Dropdown qualityDropdown;//Список с уровнями качества
@@ -30,7 +30,7 @@ public class MenuWork : MonoBehaviour
         //SceneManager.LoadScene("TestScene5");
     }
 
-    public void ExitPressed()
+    public static void ExitPressed()
     {
         Application.Quit();
         Debug.Log("Exit pressed!");
@@ -38,12 +38,10 @@ public class MenuWork : MonoBehaviour
     //методы изменения настроек
     public void ChangeVolume(float val)
     {
-        //volume = val;
         AudioMixer.SetFloat("MasterVolume", val);
     }
     public void ChangeResolution()
     {
-        //currResolutionIndex = index;
         if (resolutionDropdown.value == 0)
         {
             Screen.SetResolution(1366, 768, true);
@@ -61,37 +59,26 @@ public class MenuWork : MonoBehaviour
             Screen.SetResolution(1440, 900, true);
         }
     }
-    public void ChangeFullScreenMode()
+    public static void ChangeFullScreenMode()
     {
         //isFullScreen = val;
         isFullScreen = !isFullScreen;
         Screen.fullScreen = isFullScreen;
         isFullScreen = false;
     }
-    public void ChangeQuality(int quality)
+    public static void ChangeQuality(int quality)
     {
         QualitySettings.SetQualityLevel(quality);
-        //quality = index;
     }
     //методы внутриигрового меню
-
-    public void ShowHideMenu()
-    {
-        isOpened = !isOpened;
-        GetComponent<Canvas>().enabled = isOpened;  //Включение или отключение Canvas. Ещё тут можно использовать метод SetActive()
-    }
-
-    void Update()
-    {
-        
-    }
 
     public static void EnterMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
-    public void ContinueGame()
-    {
-
-    }
+    //public void ContinueGame()
+    //{
+        //GameObject panel = GameObject.Find("Canvas").transform.GetComponent<>
+            //Find("GameMenuPanel").SetActive = false;
+    //}
 }

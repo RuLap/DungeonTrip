@@ -2928,7 +2928,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quality: 2
-  isFullScreen: 1
   AudioMixer: {fileID: 24100000, guid: 318314c6145e0d1478ad7bbe875ee48b, type: 2}
   resolutionDropdown: {fileID: 2061181882}
   qualityDropdown: {fileID: 443099846}

@@ -2,45 +2,69 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
+using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 namespace Tests
 {
-    public class MenuWorkTest: MonoBehaviour
+    public class MenuWorkTest
     {
-        private void Start()
-        {
-            var menu = GameObject.FindObjectOfType<MenuWork>();
-            SceneManager.sceneLoaded += EnterMainMenu;
-        }
-        // A Test behaves as an ordinary method
+        private GameObject game;
+
         [Test]
         public void MenuWorkChangeFullScreenTest()
         {
-            var menu = GameObject.FindObjectOfType<MenuWork>();
-            bool isFull = true;
+            bool isFull = MenuWork.isFullScreen;
             
-            menu.ChangeFullScreenMode();
-            Assert.IsTrue(isFull != GameObject.FindObjectOfType<MenuWork>().isFullScreen);
+            MenuWork.ChangeFullScreenMode();
+            Assert.IsTrue(isFull != MenuWork.isFullScreen);
         }
 
-        [Test]
-        public void MenuWorkEnterMainMenuTest()
-        {
-            
-        }
-
-        // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-        // `yield return null;` to skip a frame.
         [UnityTest]
-        public IEnumerator MenuWorkTestWithEnumeratorPasses()
+        public IEnumerator MenuWorkEnterMainMenuTest()
         {
-            var menu = GameObject.FindObjectOfType<MenuWork>();
-            //var scene = GameObject.FindGameObjectsWithTag("MainMenu");
-            menu.EnterMainMenu();
+            //var menu = GameObject.FindObjectOfType<MenuWork>();
+            MenuWork.EnterMainMenu();
             yield return new WaitForSecondsRealtime(1f);
             Assert.IsTrue(SceneManager.GetActiveScene().name == "MainMenu");
         }
+
+        [UnityTest]
+        public IEnumerator MenuWorkChangeVolumeTest()
+        {
+            float val = -40;
+            var mix = MonoBehaviour.Instantiate(Resources.Load<GameObject>("AudioMixer"));
+            game = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Game"));
+            yield return new WaitForSecondsRealtime(1f);
+            var menu = GameObject.FindObjectOfType<MenuWork>();
+            menu.ChangeVolume(val);
+            yield return new WaitForSecondsRealtime(1f);
+            Assert.IsFalse(mix.isStatic);
+        }
+
+        [UnityTest]
+        public IEnumerator MenuWorkChangeQualityTest()
+        {
+            game = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Game"));
+            yield return new WaitForSecondsRealtime(1f);
+            //var menu = GameObject.FindObjectOfType<MenuWork>();
+            int qual = 2;
+            MenuWork.ChangeQuality(qual);
+            yield return new WaitForSecondsRealtime(1f);
+            Assert.IsTrue(qual == MenuWork.quality);
+        }
+
+        [UnityTest]
+        public IEnumerator MenuWorkExitPressedTest()
+        {
+            game = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Game"));
+            yield return new WaitForSecondsRealtime(1f);
+            //var menu = GameObject.FindObjectOfType<MenuWork>();
+            MenuWork.ExitPressed();
+            yield return new WaitForSecondsRealtime(1f);
+            Assert.IsTrue(Application.isPlaying);
+        }
+        
     }
 }

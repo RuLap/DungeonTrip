@@ -13,14 +13,8 @@ public class MenuWork : MonoBehaviour
     public AudioMixer AudioMixer; //Регулятор громкости
     public Dropdown resolutionDropdown; //Список с разрешениями для игры
     public Dropdown qualityDropdown;//Список с уровнями качества
-    GameObject activescene;
 
     public bool isOpened = false; //Открыто ли внутриигровое меню
-
-    private void Start()
-    {
-        activescene = GameObject.Find("GameMenuPanel");
-    }
 
     public void ContinuePressed()
     {
@@ -39,7 +33,7 @@ public class MenuWork : MonoBehaviour
     public static void ExitPressed()
     {
         Application.Quit();
-        //Debug.Log("Exit pressed!");
+        Debug.Log("Exit pressed!");
     }
     //методы изменения настроек
     public void ChangeVolume(float val)
@@ -82,25 +76,9 @@ public class MenuWork : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
-    public void ContinueGame()
-    {
-        activescene.SetActive(false);
+    //public void ContinueGame()
+    //{
         //GameObject panel = GameObject.Find("Canvas").transform.GetComponent<>
-        //Find("GameMenuPanel").SetActive = false;
-    }
-
-    public void ShowHideMenu()
-    {
-        isOpened = !isOpened;
-        activescene.SetActive(isOpened);
-        //GetComponent<Canvas>().enabled = isOpened;  //Включение или отключение Canvas. Ещё тут можно использовать метод SetActive()
-    }
-
-    public void Update()
-{
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            ShowHideMenu();
-        }
-    }
+            //Find("GameMenuPanel").SetActive = false;
+    //}
 }

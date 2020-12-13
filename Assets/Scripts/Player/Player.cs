@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     public PlayerStats PlayerStats { get { return playerStats; } }
     public Inventory Inventory { get { return inventory; } }
 
+    public bool isOpened = false; //Открыто ли внутриигровое меню
 
     void Start()
     {
@@ -93,6 +94,10 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             ShopOpen();
+        }
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            ShowHideMenu();
         }
     }
 
@@ -230,5 +235,10 @@ public class Player : MonoBehaviour
                 }
             }
         }
+    }
+    public void ShowHideMenu()
+    {
+        isOpened = !isOpened;
+        GetComponent<Canvas>().enabled = isOpened;  //Включение или отключение Canvas. Ещё тут можно использовать метод SetActive()
     }
 }

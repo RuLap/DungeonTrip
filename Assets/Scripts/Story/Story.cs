@@ -38,7 +38,7 @@ public class Story : MonoBehaviour
             {
                 if (isIntro)
                 {
-                    PlayerPrefs.SetString("Scene", "Magic");
+                    PlayerPrefs.SetString("Scene", "Level1");
                     SceneManager.LoadScene("LoadScreen");
                 }
                 else

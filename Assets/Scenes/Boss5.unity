@@ -103722,6 +103722,11 @@ PrefabInstance:
       propertyPath: nextSceneName
       value: Level6
       objectReference: {fileID: 0}
+    - target: {fileID: 7164917676741114281, guid: 462be8758ffacc8498d6d868a032eb09,
+        type: 3}
+      propertyPath: isForward
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 462be8758ffacc8498d6d868a032eb09, type: 3}
 --- !u!1 &959675167 stripped
@@ -104158,7 +104163,7 @@ Transform:
   m_Children:
   - {fileID: 1098095887}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1526950725 stripped
 RectTransform:

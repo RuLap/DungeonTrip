@@ -20,15 +20,8 @@ public class Portal : MonoBehaviour
                     SceneManager.LoadScene("LoadScreen");
                     return;
                 }
-                if (!nextSceneName.Contains("Boss"))
-                {
-                    SaveSystem.Info.name = "Level";
-                    SaveSystem.Info.Level++;
-                }
-                else
-                {
-                    SaveSystem.Info.name = "Boss";
-                }
+                SaveSystem.Info.name = nextSceneName.Remove(nextSceneName.Length - 1);
+                SaveSystem.Info.Level = int.Parse(nextSceneName.Substring(nextSceneName.Length - 1, 1));
                 SaveSystem.SaveGame();
                 PlayerPrefs.SetString("Scene", nextSceneName);
                 SceneManager.LoadScene("LoadScreen");

@@ -20,7 +20,6 @@ public static class SaveSystem
         inventory.InventorySaveInfo.Refresh(inventory.Items);
         inventory.InventorySaveInfo.SaveToJson();
         info.SaveToJson(); 
-        
     }
 
     /// <summary>
@@ -34,7 +33,8 @@ public static class SaveSystem
         }
         else
         {
-            SceneManager.LoadScene($"Level{info.Level}");
+            PlayerPrefs.SetString("Scene", info.name + info.Level);
+            SceneManager.LoadScene($"LoadScreen");
         }
     }
 

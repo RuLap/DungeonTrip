@@ -33,6 +33,8 @@ public class EquipmentDrop : Drop
         sprite = item.Sprite;
         GetComponent<SpriteRenderer>().sprite = sprite;
         source = GameObject.FindGameObjectWithTag("UIAudio").GetComponent<AudioSource>();
+        GetComponent<SpriteRenderer>().sortingOrder = 1;
+        transform.localScale = new Vector3(1, 1, 1);
     }
 
     private void Update()

@@ -206,6 +206,14 @@ public class Player : MonoBehaviour
         healthText.text = playerStats.health.ToString();
     }
 
+    public void AddHealth(float value)
+    {
+        playerStats.health += value;
+        if (playerStats.health > playerStats.maxHealth) playerStats.health = playerStats.maxHealth;
+        hpBar.fillAmount = playerStats.health / playerStats.maxHealth;
+        healthText.text = playerStats.health.ToString();
+    }
+
     /// <summary>
     /// Отнимает очки магии
     /// </summary>

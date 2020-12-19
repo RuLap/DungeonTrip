@@ -29,5 +29,4 @@ public class AttackAudio : MonoBehaviour
         source.clip = damage;
         source.Play();
     }
-
 }

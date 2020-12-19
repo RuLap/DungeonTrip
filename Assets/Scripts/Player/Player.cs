@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -32,6 +33,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Image xpBar;
     [SerializeField]
+    private GameObject deathText;
+    [SerializeField]
+    private AudioClip death;
 
     public float Health { get { return playerStats.health; } }
     public float Mana { get { return playerStats.mana; } }
@@ -202,11 +206,21 @@ public class Player : MonoBehaviour
     {
         damage *= 1.0f;
         playerStats.health -= damage;
-        if (playerStats.health < 0) playerStats.health = 0;
+        if (playerStats.health <= 0)
+        {
+            hpBar.fillAmount = 0;
+            healthText.text = "0";
+            Death();
+        }
         hpBar.fillAmount = playerStats.health / playerStats.maxHealth;
         healthText.text = playerStats.health.ToString();
     }
 
+
+    /// <summary>
+    /// Добавление очков жизней
+    /// </summary>
+    /// <param name="value">Количество</param>
     public void AddHealth(float value)
     {
         playerStats.health += value;
@@ -223,6 +237,18 @@ public class Player : MonoBehaviour
     {
         playerStats.mana -= value;
         if (playerStats.mana < 0) playerStats.mana = 0;
+        manaBar.fillAmount = playerStats.mana / playerStats.maxMana;
+        manaText.text = playerStats.mana.ToString();
+    }
+
+    /// <summary>
+    /// Добавляет очки магии
+    /// </summary>
+    /// <param name="value">Количество</param>
+    public void AddMana(float value)
+    {
+        playerStats.mana += value;
+        if (playerStats.mana > playerStats.maxMana) playerStats.mana = playerStats.maxMana;
         manaBar.fillAmount = playerStats.mana / playerStats.maxMana;
         manaText.text = playerStats.mana.ToString();
     }
@@ -249,5 +275,24 @@ public class Player : MonoBehaviour
     {
         isOpened = !isOpened;
         GetComponent<Canvas>().enabled = isOpened;  //Включение или отключение Canvas. Ещё тут можно использовать метод SetActive()
+    }
+
+    private void Death()
+    {
+        Time.timeScale = 0;
+        StartCoroutine("DeathAnim");
+    }
+
+    IEnumerator DeathAnim()
+    {
+        GameObject.Find("BackMusic").GetComponent<AudioSource>().clip = death;
+        GameObject.Find("BackMusic").GetComponent<AudioSource>().Play();
+        deathText.SetActive(true);
+        yield return new WaitForSecondsRealtime(6.5f);
+        playerStats.health = 100;
+        playerStats.mana = 100;
+        SaveSystem.SaveGame();
+        PlayerPrefs.SetString("Scene", SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("LoadScreen");
     }
 }

@@ -19,6 +19,8 @@ public class EquipmentDrop : Drop
     [SerializeField]
     private AudioClip full;
 
+    public Text Stats { get { return stats; } }
+    public GameObject DropStatsPanel { get { return dropStatsPanel; } }
 
     private void Start()
     {

@@ -9,9 +9,11 @@ public class MagicManager : MonoBehaviour
     public GameObject testSpell2;
     public GameObject testSpell3;
     public GameObject testSpell4;
+
+    private Player player;
     void Start()
     {
-        
+        player = GameObject.Find("Player").GetComponent<Player>();   
     }
 
     // Update is called once per frame
@@ -23,6 +25,7 @@ public class MagicManager : MonoBehaviour
             {
                 GameObject let = Instantiate(testSpell1);
                 let.transform.position = gameObject.transform.position;
+                player.ReduceMana(20);
             }
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -31,6 +34,7 @@ public class MagicManager : MonoBehaviour
             {
                 GameObject let = Instantiate(testSpell2);
                 let.transform.position = gameObject.transform.position;
+                player.ReduceMana(20);
             }
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
@@ -39,6 +43,7 @@ public class MagicManager : MonoBehaviour
             {
                 GameObject let = Instantiate(testSpell3);
                 let.transform.position = gameObject.transform.position;
+                player.ReduceMana(20);
             }
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
@@ -47,6 +52,7 @@ public class MagicManager : MonoBehaviour
             {
                 GameObject let = Instantiate(testSpell4);
                 let.transform.position = gameObject.transform.position;
+                player.ReduceMana(20);
             }
         }
     }

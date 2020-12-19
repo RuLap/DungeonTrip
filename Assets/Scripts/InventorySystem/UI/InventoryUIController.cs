@@ -362,5 +362,6 @@ public class InventoryUIController : MonoBehaviour
         {
             audio.PlayManaUse();
         }
+        player.GetComponent<Player>().AddHealth((inventory.Items[index] as PotionItem).RefillValue);
     }
 }

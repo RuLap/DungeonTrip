@@ -2,8 +2,8 @@
   "id": 17,
   "title": "Новый обычный меч",
   "description": "С таким мечом с вами точно будут считаться.",
-  "Level": 1,
-  "damage": 1,
+  "Level": 3,
+  "damage": 20,
   "spriteInt": 1,
   "price": 149
 }

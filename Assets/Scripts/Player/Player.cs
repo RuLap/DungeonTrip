@@ -200,6 +200,7 @@ public class Player : MonoBehaviour
     /// <param name="damage">Урон</param>
     public void ApplyDamage(float damage)
     {
+        damage *= 1.0f;
         playerStats.health -= damage;
         if (playerStats.health < 0) playerStats.health = 0;
         hpBar.fillAmount = playerStats.health / playerStats.maxHealth;
@@ -218,7 +219,7 @@ public class Player : MonoBehaviour
     /// Отнимает очки магии
     /// </summary>
     /// <param name="value">Сколько отнять</param>
-    private void ReduceMana(int value)
+    public void ReduceMana(int value)
     {
         playerStats.mana -= value;
         if (playerStats.mana < 0) playerStats.mana = 0;

@@ -13,15 +13,15 @@ public class PlayerXP
 
     public static PlayerXP LoadFromJson(string json)
     {
-        var jsonPath = Application.dataPath + "/StreamingAssets/" + json + ".json";
-        var jsonString = File.ReadAllText(jsonPath);
+        var jsonPath = Application.dataPath + "/StreamingAssets/" + json + ".dt";
+        var jsonString = Coder.EncodeDecrypt(File.ReadAllText(jsonPath));
         return JsonUtility.FromJson<PlayerXP>(jsonString);
     }
 
     public void SaveToJson()
     {
-        var jsonPath = Application.dataPath + "/StreamingAssets/PlayerXP.json";
-        var jsonString = JsonUtility.ToJson(this);
+        var jsonPath = Application.dataPath + "/StreamingAssets/PX.dt";
+        var jsonString = Coder.EncodeDecrypt(JsonUtility.ToJson(this));
         File.WriteAllText(jsonPath, jsonString);
     }
 

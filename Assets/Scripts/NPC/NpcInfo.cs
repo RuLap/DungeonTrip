@@ -15,8 +15,8 @@ public class NpcInfo
     /// <returns>Объект NpcInfo</returns>
     public static NpcInfo CreateFromJSON(string json)
     {
-        var jsonPath = Application.dataPath + "/StreamingAssets/" + json + ".json";
-        var jsonString = File.ReadAllText(jsonPath);
+        var jsonPath = Application.dataPath + "/StreamingAssets/" + json + ".dt";
+        var jsonString = Coder.EncodeDecrypt(File.ReadAllText(jsonPath));
         if (jsonString.Contains("[Имя героя]"))
             jsonString = jsonString.Replace("[Имя героя]", PlayerStats.LoadFromJson().name);
         return JsonUtility.FromJson<NpcInfo>(jsonString);

@@ -10,15 +10,15 @@ public class InventorySaveInfo
 
     public static InventorySaveInfo LoadFromJson()
     {
-        var jsonPath = Application.dataPath + "/StreamingAssets/InventorySaveInfo.json";
-        var jsonString = File.ReadAllText(jsonPath);
+        var jsonPath = Application.dataPath + "/StreamingAssets/ISI.dt";
+        var jsonString = Coder.EncodeDecrypt(File.ReadAllText(jsonPath));
         return JsonUtility.FromJson<InventorySaveInfo>(jsonString);
     }
 
     public void SaveToJson()
     {
-        var jsonPath = Application.dataPath + "/StreamingAssets/InventorySaveInfo.json";
-        var jsonString = JsonUtility.ToJson(this);
+        var jsonPath = Application.dataPath + "/StreamingAssets/ISI.dt";
+        var jsonString = Coder.EncodeDecrypt(JsonUtility.ToJson(this));
         File.WriteAllText(jsonPath, jsonString);
     }
 

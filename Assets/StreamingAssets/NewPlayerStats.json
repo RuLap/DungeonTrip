@@ -1,8 +1,0 @@
-{
-    "name" : "Перс",
-    "health" : 100,
-    "mana" : 100,
-    "maxHealth" : 100,
-    "maxMana": 100,
-    "money": 0
-}

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
+using System.Text;
 
 public class GameStartInfo
 {
@@ -9,15 +11,17 @@ public class GameStartInfo
     public int Level;
     public static GameStartInfo LoadFromJson()
     {
-        var jsonPath = Application.dataPath + "/StreamingAssets/GameStartInfo.json";
+        var jsonPath = Application.dataPath + "/StreamingAssets/GSI.dt";
         var jsonString = File.ReadAllText(jsonPath);
-        return JsonUtility.FromJson<GameStartInfo>(jsonString);
+        var encoded = Coder.EncodeDecrypt(jsonString);
+        return JsonUtility.FromJson<GameStartInfo>(encoded);
     }
 
     public void SaveToJson()
     {
-        var jsonPath = Application.dataPath + "/StreamingAssets/GameStartInfo.json";
+        var jsonPath = Application.dataPath + "/StreamingAssets/GSI.dt";
         var jsonString = JsonUtility.ToJson(this);
-        File.WriteAllText(jsonPath, jsonString);
+        var coded = Coder.EncodeDecrypt(jsonString);
+        File.WriteAllText(jsonPath, coded);
     }
 }

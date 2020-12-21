@@ -18,7 +18,7 @@ public class Npc : MonoBehaviour
     void Start()
     {
         messageUI = infoPanel.GetComponentInChildren<Text>();
-        info = NpcInfo.CreateFromJSON(jsonString);
+        info = NpcInfo.CreateFromJSON(jsonString.Remove(1, 2));
     }
 
     /// <summary>

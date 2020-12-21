@@ -9,8 +9,8 @@ public class StoryData
 
     public static StoryData CreateFromJSON(string json)
     {
-        var jsonPath = Application.dataPath + "/StreamingAssets/" + json + ".json";
-        var jsonString = File.ReadAllText(jsonPath);
+        var jsonPath = Application.dataPath + "/StreamingAssets/" + json + ".dt";
+        var jsonString = Coder.EncodeDecrypt(File.ReadAllText(jsonPath));
         return JsonUtility.FromJson<StoryData>(jsonString);
     }
 }

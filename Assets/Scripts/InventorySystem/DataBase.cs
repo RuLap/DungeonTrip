@@ -29,16 +29,16 @@ public class DataBase : MonoBehaviour
     {
         for (int i = 0; i < swordsInt.Length; i++)
         {
-            var jsonPath = Application.dataPath + "/StreamingAssets/Sword" + (i + 1).ToString() + ".json";
-            var jsonString = File.ReadAllText(jsonPath);
+            var jsonPath = Application.dataPath + "/StreamingAssets/S" + (i + 1).ToString() + ".dt";
+            var jsonString = Coder.EncodeDecrypt(File.ReadAllText(jsonPath));
             Swords.Add(JsonUtility.FromJson<WeaponItem>(jsonString));
             Swords[i].sprite = Resources.LoadAll<Sprite>("Swords")[swordsInt[i]];
         }
 
         for (int i = 0; i < 6; i++)
         {
-            var jsonPath = Application.dataPath + "/StreamingAssets/Armor" + (i + 1).ToString() + ".json";
-            var jsonString = File.ReadAllText(jsonPath);
+            var jsonPath = Application.dataPath + "/StreamingAssets/A" + (i + 1).ToString() + ".dt";
+            var jsonString = Coder.EncodeDecrypt(File.ReadAllText(jsonPath));
             Armors.Add(JsonUtility.FromJson<ArmorItem>(jsonString));
             Armors[i].sprite = Resources.Load<Sprite>($"Armor/{(i + 1).ToString()}");
         }

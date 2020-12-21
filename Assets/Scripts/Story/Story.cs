@@ -21,9 +21,9 @@ public class Story : MonoBehaviour
         isIntro = SceneManager.GetActiveScene().name == "Beginning" ? true : false;
         storyText = GetComponentInChildren<Text>();
         if (isIntro)
-            data = StoryData.CreateFromJSON("Intro");
+            data = StoryData.CreateFromJSON("I");
         else
-            data = StoryData.CreateFromJSON("Ending");
+            data = StoryData.CreateFromJSON("E");
         data.story = data.story.Replace("{Имя главного героя}", name);
         sentences = data.story.Split('|');
         StartCoroutine(PrintText());

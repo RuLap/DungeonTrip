@@ -14,15 +14,15 @@ public class PlayerStats
 
     public static PlayerStats LoadFromJson()
     {
-        var jsonPath = Application.dataPath + "/StreamingAssets/PlayerStats.json";
-        var jsonString = File.ReadAllText(jsonPath);
+        var jsonPath = Application.dataPath + "/StreamingAssets/PS.dt";
+        var jsonString = Coder.EncodeDecrypt(File.ReadAllText(jsonPath));
         return JsonUtility.FromJson<PlayerStats>(jsonString);
     }
 
     public void SaveToJson()
     {
-        var jsonPath = Application.dataPath + "/StreamingAssets/PlayerStats.json";
-        var jsonString = JsonUtility.ToJson(this);
+        var jsonPath = Application.dataPath + "/StreamingAssets/PS.dt";
+        var jsonString = Coder.EncodeDecrypt(JsonUtility.ToJson(this));
         File.WriteAllText(jsonPath, jsonString);
     }
 }

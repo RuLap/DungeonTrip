@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        playerXP = PlayerXP.LoadFromJson("NewPlayerXP"); 
+        playerXP = PlayerXP.LoadFromJson("PX"); 
         //Commented for debug
         //playerXP = PlayerXP.LoadFromJson(PlayerPrefs.GetString("PlayerJson"));
         playerStats = PlayerStats.LoadFromJson();

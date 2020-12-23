@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        money.text = playerStats.money.ToString();
+        //money.text = playerStats.money.ToString();
         if (Input.GetMouseButtonDown(0))
         {
             if (!GameController.IsPaused)
@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
         {
             ShopOpen();
         }
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             ShowHideMenu();
         }
@@ -271,10 +271,10 @@ public class Player : MonoBehaviour
             }
         }
     }
-    public void ShowHideMenu()
+    public static void ShowHideMenu()
     {
-        isOpened = !isOpened;
-        GetComponent<Canvas>().enabled = isOpened;  //Включение или отключение Canvas. Ещё тут можно использовать метод SetActive()
+        var menu = GameObject.Find("Canvas").transform.Find("GameMenu").transform.Find("GameMenuPanel").GetComponent<MenuWork>();
+        menu.OpenCloseMenu();
     }
 
     private void Death()

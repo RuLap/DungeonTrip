@@ -15,56 +15,62 @@ namespace Tests
         [Test]
         public void MenuWorkChangeFullScreenTest()
         {
-            bool isFull = MenuWork.isFullScreen;
-            
-            MenuWork.ChangeFullScreenMode();
-            Assert.IsTrue(isFull != MenuWork.isFullScreen);
+            game = MonoBehaviour.Instantiate(Resources.Load<GameObject>("MenuObject"));
+            var menu = GameObject.FindObjectOfType<MenuWork>();
+            bool isFull = menu.isFullScreen;
+
+            menu.ChangeFullScreenMode();
+            Assert.IsTrue(isFull != menu.isFullScreen);
         }
 
         [UnityTest]
         public IEnumerator MenuWorkEnterMainMenuTest()
         {
-            //var menu = GameObject.FindObjectOfType<MenuWork>();
-            MenuWork.EnterMainMenu();
+            game = MonoBehaviour.Instantiate(Resources.Load<GameObject>("MenuObject"));
+            var menu = GameObject.FindObjectOfType<MenuWork>();
+            menu.EnterMainMenu();
             yield return new WaitForSecondsRealtime(1f);
             Assert.IsTrue(SceneManager.GetActiveScene().name == "MainMenu");
         }
 
         [UnityTest]
-        public IEnumerator MenuWorkChangeVolumeTest()
-        {
-            float val = -40;
-            var mix = MonoBehaviour.Instantiate(Resources.Load<GameObject>("AudioMixer"));
-            game = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Game"));
-            yield return new WaitForSecondsRealtime(1f);
-            var menu = GameObject.FindObjectOfType<MenuWork>();
-            menu.ChangeVolume(val);
-            yield return new WaitForSecondsRealtime(1f);
-            Assert.IsFalse(mix.isStatic);
-        }
-
-        [UnityTest]
-        public IEnumerator MenuWorkChangeQualityTest()
-        {
-            game = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Game"));
-            yield return new WaitForSecondsRealtime(1f);
-            //var menu = GameObject.FindObjectOfType<MenuWork>();
-            int qual = 2;
-            MenuWork.ChangeQuality(qual);
-            yield return new WaitForSecondsRealtime(1f);
-            Assert.IsTrue(qual == MenuWork.quality);
-        }
-
-        [UnityTest]
         public IEnumerator MenuWorkExitPressedTest()
         {
-            game = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Game"));
+            game = MonoBehaviour.Instantiate(Resources.Load<GameObject>("MenuObject"));
             yield return new WaitForSecondsRealtime(1f);
-            //var menu = GameObject.FindObjectOfType<MenuWork>();
-            MenuWork.ExitPressed();
+            var menu = GameObject.FindObjectOfType<MenuWork>();
+            menu.ExitPressed();
             yield return new WaitForSecondsRealtime(1f);
             Assert.IsTrue(Application.isPlaying);
         }
-        
+        //тесты для внутриигрового меню
+        [Test]
+        public void OpenCloseMenuTest()
+        {
+            game = MonoBehaviour.Instantiate(Resources.Load<GameObject>("GameMenuObject"));
+            var menu = GameObject.Find("Canvas").transform.Find("GameMenuPanel").GetComponent<MenuWork>();
+            bool isOpen = menu.isOpened;
+            menu.OpenCloseMenu();
+            Assert.IsTrue(isOpen != menu.isOpened);
+        }
+        [Test]
+        public void ContinueGameTest()
+        {
+            game = MonoBehaviour.Instantiate(Resources.Load<GameObject>("GameMenuObject"));
+            var menu = GameObject.Find("Canvas").transform.Find("GameMenuPanel").GetComponent<MenuWork>();
+            bool isOpen = menu.isOpened;
+            menu.ContinueGame();
+            Assert.IsTrue(isOpen == menu.isOpened);
+        }
+        [Test]
+        public void ButtonCloseTest()
+        {
+            game = MonoBehaviour.Instantiate(Resources.Load<GameObject>("GameMenuObject"));
+            var menu = GameObject.Find("Canvas").transform.Find("GameMenuPanel").GetComponent<MenuWork>();
+            bool isOpen = menu.isOpened;
+            menu.ButtonClose();
+            Assert.IsTrue(isOpen == menu.isOpened);
+        }
+
     }
 }

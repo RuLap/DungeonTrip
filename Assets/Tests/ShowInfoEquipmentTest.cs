@@ -11,14 +11,6 @@ namespace Tests
     {
         private GameObject game;
         private GameObject dropStatsPanel;
-        
-
-        // A Test behaves as an ordinary method
-        [Test]
-        public void ShowInfoEquipmentTestSimplePasses()
-        {
-            // Use the Assert class to test conditions
-        }
 
         [UnityTest]
         public IEnumerator ShowInfoEquipmentTestWithEnumeratorPasses()

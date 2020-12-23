@@ -43,6 +43,9 @@ public static class SaveSystem
     /// </summary>
     public static void NewGame()
     {
+        info.Level = 1;
+        info.name = "Level";
+        info.SaveToJson();
         SceneManager.LoadScene("Beginning");
     }
 }

@@ -95,7 +95,7 @@ public class MenuWork : MonoBehaviour
     {
         isOpened = !isOpened;
         MenuPanel.SetActive(isOpened);
-        isOpened = true;
+        //isOpened = true;
     }
 
 }

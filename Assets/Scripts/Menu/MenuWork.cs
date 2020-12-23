@@ -8,13 +8,13 @@ using System.Linq;
 
 public class MenuWork : MonoBehaviour
 {
-    public static int quality = 2; //Качество
-    public static bool isFullScreen = true; //Полноэкранный режим
+    public  bool isFullScreen = true; //Полноэкранный режим
     public AudioMixer AudioMixer; //Регулятор громкости
     public Dropdown resolutionDropdown; //Список с разрешениями для игры
     public Dropdown qualityDropdown;//Список с уровнями качества
 
-    public bool isOpened = false; //Открыто ли внутриигровое меню
+    public  bool isOpened = false; //Открыто ли внутриигровое меню
+    public  GameObject MenuPanel;
 
     public void ContinuePressed()
     {
@@ -30,7 +30,7 @@ public class MenuWork : MonoBehaviour
         //SceneManager.LoadScene("TestScene5");
     }
 
-    public static void ExitPressed()
+    public  void ExitPressed()
     {
         Application.Quit();
         Debug.Log("Exit pressed!");
@@ -58,27 +58,44 @@ public class MenuWork : MonoBehaviour
         {
             Screen.SetResolution(1440, 900, true);
         }
+        if (resolutionDropdown.value == 4)
+        {
+            Screen.SetResolution(1920, 1080, true);
+        }
     }
-    public static void ChangeFullScreenMode()
+    public  void ChangeFullScreenMode()
     {
-        //isFullScreen = val;
         isFullScreen = !isFullScreen;
         Screen.fullScreen = isFullScreen;
-        isFullScreen = false;
     }
-    public static void ChangeQuality(int quality)
+    public void ChangeQuality()
     {
-        QualitySettings.SetQualityLevel(quality);
+        QualitySettings.SetQualityLevel(qualityDropdown.value,true);
     }
-    //методы внутриигрового меню
 
-    public static void EnterMainMenu()
+    //методы внутриигрового меню
+    public  void EnterMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
-    //public void ContinueGame()
-    //{
-        //GameObject panel = GameObject.Find("Canvas").transform.GetComponent<>
-            //Find("GameMenuPanel").SetActive = false;
-    //}
+
+    public void ContinueGame()
+    {
+        isOpened = false;
+        MenuPanel.SetActive(false);
+    }
+
+    public void ButtonClose()
+    {
+        isOpened = false;
+        MenuPanel.SetActive(false);
+    }
+
+    public void OpenCloseMenu()
+    {
+        isOpened = !isOpened;
+        MenuPanel.SetActive(isOpened);
+        isOpened = true;
+    }
+
 }
